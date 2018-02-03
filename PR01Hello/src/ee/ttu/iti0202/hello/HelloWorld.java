@@ -6,7 +6,7 @@ public class HelloWorld {
     }
 
     private static String helloStudent(String name) {
-        int nameLen = 6 ;
+        int nameLen = 6;
         if (name.length() <= nameLen) {
             return "Hello student " + name + ", whose name is " + name.length() + " characters long!";
         } else {
