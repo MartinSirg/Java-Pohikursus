@@ -5,7 +5,7 @@ public class HelloWorld {
     public static void main(String[] args) {
     }
 
-    private static String helloStudent(String name) {
+    public static String helloStudent(String name) {
         int nameLen = 6;
         if (name.length() <= nameLen) {
             return "Hello student " + name + ", whose name is " + name.length() + " characters long!";
@@ -13,14 +13,14 @@ public class HelloWorld {
             return "Hello student " + name + ", whose name is too long!";
         }
     }
-    private static int sumGenerator(int termination, int increment) {
+    public static int sumGenerator(int termination, int increment) {
         int result = 0;
         for (int i = 0; i != termination; i += increment) {
             result += i;
         }
         return result;
     }
-    private static String wordSeparator(String str, int start, int end) {
+    public static String wordSeparator(String str, int start, int end) {
         if (start < 0 || end > str.length()) {
             return "";
         } else {
