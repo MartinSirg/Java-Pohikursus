@@ -2,6 +2,7 @@ package ee.ttu.iti0202.calculator;
 
 public class Calculator {
     public static void main(String[] args) {
+        System.out.println(center("Martin", 10, LongerPad.LEFT));
     }
     private enum LongerPad { LEFT, RIGHT }
 
@@ -96,6 +97,33 @@ public class Calculator {
      * @return new center justified string
      */
     private static String center(String s, int width, LongerPad pad) {
+        StringBuilder result = new StringBuilder();
+
+        if (width < s.length()) {               // When result width is smaller than string length
+            int middleIndex = s.length() / 2;
+            switch (width % 2) {
+                case 0: return s.substring(middleIndex - width / 2, middleIndex + width / 2);       // width is even int
+                case 1: return s.substring(middleIndex - width / 2 - 1, middleIndex + width / 2);   // width is uneven
+            }
+        } else if (width % 2 != s.length() % 2) {
+            int delta = width - s.length(), left = 0, right = 0;
+
+            switch (pad) {
+                case LEFT:  left = delta / 2 + 1;
+                            right = delta / 2;
+                            break;
+                case RIGHT: left = delta / 2;
+                            right = delta / 2 + 1;
+                            break;
+            }
+            result.append(repeat(" ", left)).append(s).append(repeat(" ", right));
+            return result.toString();
+        } else {
+            int  sidePadding = (width - s.length()) / 2;
+
+            result.append(repeat(" ", sidePadding)).append(s).append(repeat(" ", sidePadding));
+            return result.toString();
+        }
         return "";
     }
 
