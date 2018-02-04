@@ -1,8 +1,8 @@
 package ee.ttu.iti0202.calculator;
 
 public class Calculator {
-    public static void main(String[] args) {}
-
+    public static void main(String[] args) {
+    }
     private enum LongerPad { LEFT, RIGHT }
 
     /**
@@ -13,8 +13,10 @@ public class Calculator {
      * @param s original name
      */
     private static String convertName(String s) {
-        if (s.length() < 3) {return "ERROR";}
-        String first = s.substring(0,3).toUpperCase();
+        if (s.length() < 3) {
+            return "ERROR";
+        }
+        String first = s.substring(0, 3).toUpperCase();
         String end = s.substring(s.length() - 2).toLowerCase();
         return String.format("%s-%d%s", first, s.length(), end);
         //String.format("%2$s", 32, "Hello"); // prints: "Hello"
@@ -41,7 +43,9 @@ public class Calculator {
      */
     private static String repeat(String s, int n) {
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < n; i++){result.append(s);}
+        for (int i = 0; i < n; i++) {
+            result.append(s);
+        }
         return result.toString();
     }
 
@@ -53,9 +57,13 @@ public class Calculator {
      * If decorated and width is 1, return an empty string ("").
      */
     private static String line(int width, boolean decorated) {
-        if (!decorated){ return repeat("-", width);}
-        else if (decorated && width < 2){return "";}
-        else {return String.format(">%s<", repeat("-", width - 2));}
+        if (!decorated) {
+            return repeat("-", width);
+        } else if (decorated && width < 2) {
+            return "";
+        } else {
+            return String.format(">%s<", repeat("-", width - 2));
+        }
     }
 
     /**
