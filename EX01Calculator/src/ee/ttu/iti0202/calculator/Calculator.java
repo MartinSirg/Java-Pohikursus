@@ -2,7 +2,6 @@ package ee.ttu.iti0202.calculator;
 
 public class Calculator {
     public static void main(String[] args) {
-        System.out.println(center("Martin", 2, LongerPad.RIGHT));
     }
     private enum LongerPad { LEFT, RIGHT }
 
@@ -128,6 +127,17 @@ public class Calculator {
     }
 
     /**
+     *System.out.println(display(2, 3, "abc", "addition", 20))
+     *
+     *              ABC-3bc
+     * >------------------<
+     * |     2 + 3 = 5    |
+     * --------------------
+     *  operationNumber == 0 : addition
+     *  operationNumber == 1 : subtraction
+     *
+     *
+     *
      * Create a string representing the display.
      * Use LongerPad.LEFT when centering.
      * Width of the display must be set to the assigned width or expression width, whichever is bigger.
@@ -141,7 +151,24 @@ public class Calculator {
      * @return string representing the final format
      */
     private static String display(int a, int b, String name, String operation, int width) {
-        return "";
+        String equation;
+        StringBuilder result = new StringBuilder("");
+        switch (operation) {
+            case "addition":    equation = addition(a, b);
+                break;
+            case "subtraction": equation = subtraction(a, b);
+                break;
+            default:            equation = "ERROR";
+                break;
+        }
+        if (equation.length() > width) {
+            width = equation.length() + 2;
+        }
+        result.append(String.format("%" + width + "s\n", convertName(name)));
+        result.append(line(width, true) + "\n");
+        result.append("|" + center(equation, width - 2, LongerPad.LEFT) + "|\n");
+        result.append(line(width));
+        return result.toString();
     }
 
 }
