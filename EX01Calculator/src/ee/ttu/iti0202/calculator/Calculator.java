@@ -2,7 +2,6 @@ package ee.ttu.iti0202.calculator;
 
 public class Calculator {
     public static void main(String[] args) {
-        System.out.println(Calculator.display(2,3,"MARTIN","subtraction", 30));
     }
     private enum LongerPad { LEFT, RIGHT }
 
