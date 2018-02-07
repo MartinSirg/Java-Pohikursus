@@ -17,14 +17,14 @@ public class StringOperations {
         System.out.println(xyBalance("yaaxbb")); // false
     }
 
-    private static String removeDuplicates(String input){
-        if (input.length() == 0){
+    private static String removeDuplicates(String input) {
+        if (input.length() == 0) {
             return "";
         }
         StringBuilder result = new StringBuilder();
         result.append(input.charAt(0));
         for (int i = 1; i < input.length(); i++) {
-            if (input.charAt(i - 1) != input.charAt(i)){
+            if (input.charAt(i - 1) != input.charAt(i)) {
                 result.append(input.charAt(i));
             }
         }
@@ -53,7 +53,7 @@ public class StringOperations {
         return balanced;
     }
     private static void test(String name) {
-        for (char c : name.toCharArray()){
+        for (char c : name.toCharArray()) {
             System.out.println(c);
         }
     }
