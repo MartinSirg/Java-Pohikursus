@@ -66,7 +66,6 @@ public class Decoder {
 
             }
             if (upperCase) { upperCase = false;};
-
         }
 
         return result.toString();
