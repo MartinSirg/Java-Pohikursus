@@ -1,6 +1,9 @@
 package ee.ttu.iti0202.decoder;
 
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Scanner;
+
 
 public class Decoder {
     private enum State { LONG_INDEX, SHORT_INDEX, OTHER }
@@ -95,21 +98,14 @@ public class Decoder {
     }
 
     public static void main(String[] args) {
-        // Dictionary of 100 * "a" + "abcdefghijklmnopqrstuvwxyz"
-        StringBuilder dictionary  = new StringBuilder();
-        for (int i = 0; i < 100; i++) dictionary.append("a");
-        dictionary.append("abcdefghijklmnopqrstuvwxyz");
-
-        System.out.println(Decoder.decodeMessage(dictionary.toString(), "$1+0+71+0+41+1+11+1+11+1+4 1+2+21+1+41+1+71+1+11+0+3!")); // => Hello world!
-        System.out.println(Decoder.decodeMessage("a", "")); // =>
-
-        System.out.println(Decoder.decodeMessage("", "Hello world!")); // => Hello world!
-
-        System.out.println(Decoder.decodeMessage("abcdefghijklmnopqrstuvwxyz", "$741+11+11+4 2+21+41+71+13!")); // => Hello world!
-
-        System.out.println(Decoder.decodeMessage("onetw", "$012, 340")); // => One, two
-
-        System.out.println(Decoder.decodeMessage("catnip", "$0$1$5$2$1$4$3")); // => CAPTAIN
+        System.out.print("Enter dictionary: ");
+        Scanner scanner = new Scanner(System.in);
+        String dictionary = scanner.nextLine(), message;
+        while (true) {
+            System.out.print("Enter message: ");
+            message = scanner.nextLine();
+            System.out.println("Decoded message: " + decodeMessage(dictionary, message));
+        }
     }
 
 }
