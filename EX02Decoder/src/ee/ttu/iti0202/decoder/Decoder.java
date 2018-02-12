@@ -54,8 +54,9 @@ public class Decoder {
 
             switch (current) {
                 case LONG_INDEX:    int regexInt = regexer("^\\d[+]\\d([+]\\d)*", message.substring(i)); // "1+2+354+1+2" => 123
-                                    result.append(caseDecider(upperCase, dictionary.charAt(regexInt)));                             // append dict char to result
-                                    i = i + String.valueOf(regexInt).length();  // increase i in according to number length
+
+                                    result.append(caseDecider(upperCase, dictionary.charAt(regexInt))); // append dict char to result
+                                    i =  i + (String.valueOf(regexInt).length() - 1)  * 2;  // (len - 1) * 2
                     break;
                 case SHORT_INDEX:   int dictIndex = Integer.parseInt(String.valueOf(message.charAt(i)));
                                     result.append(caseDecider(upperCase, dictionary.charAt(dictIndex)));
@@ -94,6 +95,12 @@ public class Decoder {
     }
 
     public static void main(String[] args) {
+        // Dictionary of 100 * "a" + "abcdefghijklmnopqrstuvwxyz"
+        StringBuilder dictionary  = new StringBuilder();
+        for (int i = 0; i < 100; i++) dictionary.append("a");
+        dictionary.append("abcdefghijklmnopqrstuvwxyz");
+
+        System.out.println(Decoder.decodeMessage(dictionary.toString(), "$1+0+71+0+41+1+11+1+11+1+4 1+2+21+1+41+1+71+1+11+0+3!")); // => Hello world!
         System.out.println(Decoder.decodeMessage("a", "")); // =>
 
         System.out.println(Decoder.decodeMessage("", "Hello world!")); // => Hello world!
@@ -103,8 +110,7 @@ public class Decoder {
         System.out.println(Decoder.decodeMessage("onetw", "$012, 340")); // => One, two
 
         System.out.println(Decoder.decodeMessage("catnip", "$0$1$5$2$1$4$3")); // => CAPTAIN
-
-        System.out.println(Decoder.decodeMessage("race", "0123210")); // => racecar
     }
 
 }
+
