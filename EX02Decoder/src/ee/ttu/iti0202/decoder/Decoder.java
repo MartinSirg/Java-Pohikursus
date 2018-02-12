@@ -108,12 +108,19 @@ public class Decoder {
     public static void main(String[] args) {
         System.out.print("Enter dictionary: ");
         Scanner scanner = new Scanner(System.in);
-        String dictionary = scanner.nextLine();
+        String dictionary = "";
+        if (scanner.hasNext()) {
+            dictionary = scanner.nextLine();
+        }
         Pattern checkRegex = Pattern.compile("([^\\\\n]*)");
 
         while (true) {
             System.out.print("Enter message: ");
-            Matcher regexMatcher = checkRegex.matcher(scanner.nextLine());
+            Matcher regexMatcher = checkRegex.matcher("");
+            if (scanner.hasNext()){
+                regexMatcher = checkRegex.matcher(scanner.nextLine());
+            }
+
 
             while (regexMatcher.find()) {
                 if (regexMatcher.group().length() != 0) {
