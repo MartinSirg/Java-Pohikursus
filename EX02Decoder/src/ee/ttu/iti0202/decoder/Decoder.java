@@ -101,10 +101,22 @@ public class Decoder {
         System.out.print("Enter dictionary: ");
         Scanner scanner = new Scanner(System.in);
         String dictionary = scanner.nextLine(), message;
+        StringBuilder sb = new StringBuilder();
+
+        Pattern checkRegex = Pattern.compile("([^\\\\n]*)");
+        Matcher regexMatcher;
+
         while (true) {
             System.out.print("Enter message: ");
-            message = scanner.nextLine();
-            System.out.println("Decoded message: " + decodeMessage(dictionary, message));
+            regexMatcher = checkRegex.matcher(scanner.nextLine());
+
+            while (regexMatcher.find()) {
+                if (regexMatcher.group().length() != 0) {
+                    System.out.println("Decoded message: " + decodeMessage(dictionary, regexMatcher.group()));
+                }
+            }
+
+                //
         }
     }
 
