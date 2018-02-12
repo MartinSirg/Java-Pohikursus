@@ -3,11 +3,16 @@ package ee.ttu.iti0202.decoder;
 import java.util.regex.*;
 
 public class Decoder {
-    String ALLOWED_CHARS = "0123456789";
+    private enum State { LONG_INDEX, SHORT_INDEX, OTHER }
+
     /**
      * message : 1) + , $, %d, other
      * 1+1
-     *
+     *Muutujad: suur täht ($), suur number(+), lihtsalt täht
+     * 4.lower case small
+     * 3.lower case big
+     * 1. upper case big
+     * 2. upper case small
      * Method deciphers given message based on the dictionary.
      *
      * The message consists of a series of numbers, which point to a letter's
@@ -29,25 +34,41 @@ public class Decoder {
      */
     private static String decodeMessage(String dictionary, String message) {
         StringBuilder result = new StringBuilder();
+        Boolean upperCase = false;
+        message = message + "#"; // extra room for loop: index error prevention
+
+        if (message.length() == 0) { return ""; }
 
         for (int i = 0; i < message.length() - 1; i++) {
-            System.out.println(i + ".");
-            if (message.charAt(i + 1) == '+') {                 // when next char is '+'
-                int regexInt = regexer("^\\d[+]\\d([+]\\d)*", message.substring(i)); // "1+2+354+1+2" => 123
-                result.append(dictionary.charAt(regexInt));     // append dict char to result
-                 i = i + String.valueOf(regexInt).length() - 1; // increase i in according to number length
-            } else if (message.charAt(i) == '$') {
-                char msgChar = message.charAt(i + 1);    //append upper dict char to result
-                int dictIndex = Integer.parseInt(String.valueOf(msgChar)); // char -> String -> int XD hax
-                result.append(Character.toUpperCase(dictionary.charAt(dictIndex)));
-                ++i;
-            } else if (Character.isDigit(message.charAt(i))) {
-                int dictIndex = Integer.parseInt(String.valueOf(message.charAt(i)));
-                result.append(Character.toUpperCase(dictionary.charAt(dictIndex)));
-            } else /// normal case | upper + long digit
+            State current;
+
+            if (message.charAt(i) == '$') {
+                 upperCase = true; continue;
+             } else if (message.charAt(i + 1) == '+') {
+                current = State.LONG_INDEX;
+            } else if (!Character.isDigit(message.charAt(i))) {
+                current = State.OTHER;
+            } else {
+                current = State.SHORT_INDEX;
+            }
+
+            switch (current) {
+                case LONG_INDEX:    int regexInt = regexer("^\\d[+]\\d([+]\\d)*", message.substring(i)); // "1+2+354+1+2" => 123
+                                    result.append(caseDecider(upperCase, dictionary.charAt(regexInt)));                             // append dict char to result
+                                    i = i + String.valueOf(regexInt).length();  // increase i in according to number length
+                    break;
+                case SHORT_INDEX:   int dictIndex = Integer.parseInt(String.valueOf(message.charAt(i)));
+                                    result.append(caseDecider(upperCase, dictionary.charAt(dictIndex)));
+                    break;
+                default:    if (upperCase) { result.append(Character.toUpperCase(message.charAt(i)));
+                            } else { result.append(message.charAt(i));
+                }
+
+            }
+            if (upperCase) { upperCase = false;};
 
         }
-        result.append("LASTLETTER");
+
         return result.toString();
     }
 
@@ -68,8 +89,23 @@ public class Decoder {
         return 0; //mdea miks siin nii väga nõuab returni
     }
 
+    private static char caseDecider(Boolean upperCase, char c) {
+        if (upperCase) { return Character.toUpperCase(c);
+        } else { return c;}
+    }
+
     public static void main(String[] args) {
-        System.out.println(regexer("^\\d[+]\\d([+]\\d)*", "1+2+3+4+536481+1+4"));
+        System.out.println(Decoder.decodeMessage("a", "")); // =>
+
+        System.out.println(Decoder.decodeMessage("", "Hello world!")); // => Hello world!
+
+        System.out.println(Decoder.decodeMessage("abcdefghijklmnopqrstuvwxyz", "$741+11+11+4 2+21+41+71+13!")); // => Hello world!
+
+        System.out.println(Decoder.decodeMessage("onetw", "$012, 340")); // => One, two
+
+        System.out.println(Decoder.decodeMessage("catnip", "$0$1$5$2$1$4$3")); // => CAPTAIN
+
+        System.out.println(Decoder.decodeMessage("race", "0123210")); // => racecar
     }
 
 }
