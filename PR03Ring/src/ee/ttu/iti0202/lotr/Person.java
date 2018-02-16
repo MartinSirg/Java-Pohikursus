@@ -32,11 +32,10 @@ public class Person {
     }
 
     public String isSauron() {
-        if (ring == null) {
-            return "No";
-        }
         if ("Sauron".equals(name)) {
-            if (!"The one".equals(ring.getType())) {
+            if (ring == null) {
+                return "No, but he's claiming to be";
+            } else if (!"The one".equals(ring.getType())) {
                 return "No, but he's claiming to be";
             } else if (!"gold".equals(ring.getMaterial())) {
                 return "No, the ring is fake!";
@@ -44,6 +43,9 @@ public class Person {
                 return "Affirmative";
             }
 
+        }
+        if (ring == null) {
+            return "No";
         }
         if ("The one".equals(getRing().getType()) && "gold".equals(ring.getMaterial()) && !"Sauron".equals(name)) {
             return "No, he just stole the ring";
