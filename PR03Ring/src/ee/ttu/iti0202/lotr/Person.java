@@ -5,7 +5,7 @@ public class Person {
     private String name;
     private Ring ring;
 
-    public Person(String race, String name, Ring ring){
+    public Person(String race, String name, Ring ring) {
         this.race = race;
         this.name = name;
         this.ring = ring;
@@ -32,14 +32,13 @@ public class Person {
     }
 
     public String isSauron() {
-        if (ring.equals(null)) {
+        if (ring == null) {
             return "No";
         }
-        if("Sauron".equals(name)) {
-            if (!"The one".equals(ring.getType())){
+        if ("Sauron".equals(name)) {
+            if (!"The one".equals(ring.getType())) {
                 return "No, but he's claiming to be";
-            }
-            else if (!"gold".equals(ring.getMaterial())) {
+            } else if (!"gold".equals(ring.getMaterial())) {
                 return "No, the ring is fake!";
             } else {
                 return "Affirmative";
