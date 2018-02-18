@@ -110,7 +110,7 @@ public class Decoder {
         Scanner scanner = new Scanner(System.in);
         String dictionary = "";
         if (scanner.hasNext()) {
-            dictionary = scanner.nextLine();
+            dictionary = scanner.next();
         }
         Pattern checkRegex = Pattern.compile("([^\\\\n]*)");
 
@@ -118,7 +118,7 @@ public class Decoder {
             System.out.print("Enter message: ");
             Matcher regexMatcher = checkRegex.matcher("");
             if (scanner.hasNext()){
-                regexMatcher = checkRegex.matcher(scanner.nextLine());
+                regexMatcher = checkRegex.matcher(scanner.next());
             }
 
 

@@ -52,6 +52,8 @@ public class Book {
     public boolean buy(Person buyer) {
         if (buyer == null && owner == null) {
             return false;
+        } else if (buyer == owner) {
+            return false;
         } else if (buyer ==  null) {
             owner.setMoney(owner.getMoney() + price);
             setOwner(null);
