@@ -34,8 +34,8 @@ public class Kindergarten {
     public HashMap<String, Integer> getAllFirstNameAmounts() {
         HashMap<String, Integer> firstNames = new HashMap<>();
 
-        for (int i = 0; i < children.size(); i++) {
-            String[] fullName = children.get(i).split(" ");
+        for (String name : children) {
+            String[] fullName = name.split(" ");
             String firstname = fullName[0];
 
             if (!firstNames.containsKey(firstname)) {
