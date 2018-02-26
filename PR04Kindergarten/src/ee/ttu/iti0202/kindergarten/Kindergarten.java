@@ -62,6 +62,10 @@ public class Kindergarten {
 
         for (String name : children) {
             String[] fullName = name.split(" ");
+
+            if (fullName.length < 2) {
+                continue;
+            }
             String lastName = fullName[fullName.length - 1];
 
             if (!lastNames.containsKey(lastName)) {
