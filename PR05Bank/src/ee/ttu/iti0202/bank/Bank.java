@@ -24,12 +24,12 @@ public class Bank {
     public void addCard(BankCard card) {
         if (card.getBank() == null) {
             card.setBank(this);
+            allCards.add(card);
             if (card instanceof DebitCard) {
                 allDebitCards.add((DebitCard) card);
             } else {
                 allCreditCards.add((CreditCard) card);
             }
-            allCards.add(card);
         }
     }
 
