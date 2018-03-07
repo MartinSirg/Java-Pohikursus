@@ -1,6 +1,7 @@
 package ee.ttu.iti0202.bank;
 
 import ee.ttu.iti0202.card.BankCard;
+import ee.ttu.iti0202.card.CreditCard;
 import ee.ttu.iti0202.card.DebitCard;
 
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ import java.util.List;
 public class Bank {
     private String name;
     private List<BankCard> allCards = new ArrayList<>();
-    private List<BankCard> allDebitCards = new ArrayList<>();
-    private List<BankCard> allCreditCards = new ArrayList<>();
+    private List<DebitCard> allDebitCards = new ArrayList<>();
+    private List<CreditCard> allCreditCards = new ArrayList<>();
 
     public Bank(String name) {
         this.name = name;
@@ -24,9 +25,9 @@ public class Bank {
         if (card.getBank() == null) {
             card.setBank(this);
             if (card instanceof DebitCard) {
-                allDebitCards.add(card);
+                allDebitCards.add((DebitCard) card);
             } else {
-                allCreditCards.add(card);
+                allCreditCards.add((CreditCard) card);
             }
             allCards.add(card);
         }
@@ -36,11 +37,11 @@ public class Bank {
         return allCards;
     }
 
-    public List<BankCard> getAllDebitCards() {
+    public List<DebitCard> getAllDebitCards() {
         return allDebitCards;
     }
 
-    public List<BankCard> getAllCreditCards() {
+    public List<CreditCard> getAllCreditCards() {
         return allCreditCards;
     }
 
