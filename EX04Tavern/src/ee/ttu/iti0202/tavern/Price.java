@@ -32,5 +32,27 @@ public class Price {
         return result;
     }
 
+    public static Price of(int gold, int silver, int copper) {
+        Price hind = new Price(copper, Currency.get("copper"));
+        hind.add(silver, Currency.get("silver")).add(gold, Currency.get("gold"));
+        return hind;
+    }
 
+    public static Price of(int copper) {
+        return new Price(copper, Currency.get("copper"));
+    }
+
+    @Override
+    public String toString() {
+        Map<Currency, Integer> price = this.getPrice();
+        StringBuilder s = new StringBuilder();
+        if (price.get(Currency.get("gold")) != null) s.append(price.get(Currency.get("gold")) + " gold");
+        String comma = "";
+        if (s.toString().length() > 0) {
+            comma = ", ";
+        }
+        if (price.get(Currency.get("silver")) != null) s.append(String.format("%s%d silver", comma,
+                price.get(Currency.get("silver"))));
+        6
+    }
 }

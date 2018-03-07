@@ -1,4 +1,7 @@
-package ee.ttu.iti0202.card;
+package ee.ttu.iti0202.bank;
+
+import ee.ttu.iti0202.card.BankCard;
+import ee.ttu.iti0202.card.DebitCard;
 
 import java.util.ArrayList;
 import java.util.List;
