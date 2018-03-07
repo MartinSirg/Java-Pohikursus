@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public final class DebitCard extends BankCard {
     protected DebitCard() {
-        super.balance = new BigDecimal("0.00");
+        super.balance = new BigDecimal(0);
     }
 
 

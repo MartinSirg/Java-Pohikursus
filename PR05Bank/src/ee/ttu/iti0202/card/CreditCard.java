@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class CreditCard extends BankCard {
 
     protected CreditCard() {
-        balance = new BigDecimal("10000.00");
+        balance = new BigDecimal("10000");
     }
 
     @Override
