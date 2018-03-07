@@ -3,7 +3,7 @@ package ee.ttu.iti0202.card;
 import java.math.BigDecimal;
 
 public final class DebitCard extends BankCard {
-    protected DebitCard() {
+    DebitCard() {
         super.balance = new BigDecimal(0);
     }
 

@@ -8,7 +8,7 @@ public class BankCard {
 
     public enum CardType { DEBIT, CREDIT }
     private Bank bank;
-    protected BigDecimal balance;
+    BigDecimal balance;
 
     public Bank getBank() {
         return bank;

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public final class CreditCard extends BankCard {
 
-    protected CreditCard() {
+    CreditCard() {
         balance = new BigDecimal("10000");
     }
 
