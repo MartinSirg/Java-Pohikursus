@@ -19,10 +19,17 @@ public class BankCard {
     }
 
     public void deposit(BigDecimal value) {
+        balance = balance.add(value);
     }
 
     public boolean withdraw(BigDecimal value) {
-        return true;
+        BigDecimal zero = new BigDecimal(0);
+        if (value.compareTo(zero) < 0) { // value < 0
+            return false;
+        } else {
+            balance = balance.subtract(value);
+            return true;
+        }
     }
 
     public void setBank(Bank bank) {

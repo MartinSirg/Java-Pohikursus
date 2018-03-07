@@ -2,7 +2,7 @@ package ee.ttu.iti0202.card;
 
 import java.math.BigDecimal;
 
-public class CreditCard extends BankCard {
+public final class CreditCard extends BankCard {
 
     protected CreditCard() {
         balance = new BigDecimal("10000");
