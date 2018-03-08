@@ -25,16 +25,7 @@ public abstract class BankCard {
         }
     }
 
-    public boolean withdraw(BigDecimal value) {
-        BigDecimal zero = new BigDecimal(0);
-        if (value.compareTo(zero) < 0) { // value < 0
-            return false;
-        } else {
-            balance = balance.subtract(value);
-            return true;
-        }
-    }
-
+    public abstract boolean withdraw(BigDecimal value);
     public void setBank(Bank bank) {
         this.bank = bank;
 
