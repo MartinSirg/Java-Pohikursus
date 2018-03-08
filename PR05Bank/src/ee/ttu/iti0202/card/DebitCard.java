@@ -11,7 +11,7 @@ public final class DebitCard extends BankCard {
     @Override
     public boolean withdraw(BigDecimal value) {
         BigDecimal zero = new BigDecimal("0");
-        if (balance.subtract(value).compareTo(zero) < 0 || value.compareTo(zero) < 0) { //newBalance < 0 or value < 0
+        if (balance.subtract(value).compareTo(zero) < 0 || value.compareTo(zero) < 1) { //newBalance < 0 or value <= 0
             return false;
         } else {
             balance = balance.subtract(value);
