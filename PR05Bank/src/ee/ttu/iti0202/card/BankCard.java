@@ -34,6 +34,7 @@ public class BankCard {
 
     public void setBank(Bank bank) {
         this.bank = bank;
+
     }
     public static BankCard createCard(CardType cardType, Bank bank) {
         BankCard newCard;
@@ -42,7 +43,7 @@ public class BankCard {
         } else {
             newCard = new CreditCard();
         }
-        newCard.setBank(bank);
+        bank.addCard(newCard);
         return newCard;
     }
 }

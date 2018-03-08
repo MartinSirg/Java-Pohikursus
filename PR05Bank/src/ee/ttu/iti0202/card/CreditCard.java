@@ -12,7 +12,7 @@ public final class CreditCard extends BankCard {
     public boolean withdraw(BigDecimal value) {
         BigDecimal limit = new BigDecimal("-5000"), zero = new BigDecimal(0);
 
-        if (balance.compareTo(limit) < 0 || value.compareTo(zero) < 0) { // balance < -5000 or value < 0
+        if (balance.subtract(value).compareTo(limit) < 0 || value.compareTo(zero) < 0) { // balance < -5000 or value < 0
             return false;
         } else {
             balance = balance.subtract(value);
