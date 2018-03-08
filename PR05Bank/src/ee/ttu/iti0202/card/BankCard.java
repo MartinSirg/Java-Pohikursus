@@ -4,7 +4,7 @@ import ee.ttu.iti0202.bank.Bank;
 
 import java.math.BigDecimal;
 
-public class BankCard {
+public abstract class BankCard {
 
     public enum CardType { DEBIT, CREDIT }
     private Bank bank;
