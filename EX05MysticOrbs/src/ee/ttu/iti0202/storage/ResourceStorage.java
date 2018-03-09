@@ -30,11 +30,7 @@ public class ResourceStorage {
     }
 
     public boolean hasEnoughResource(String resource, int amount) {
-        if (!resources.containsKey(resource) || amount < 1 || resources.get(resource) < amount) {
-            return false;
-        } else {
-            return true;
-        }
+        return resources.containsKey(resource) && amount >= 1 && resources.get(resource) >= amount;
     }
 
     public boolean takeResource(String resource, int amount) {
@@ -45,4 +41,6 @@ public class ResourceStorage {
             return false;
         }
     }
+
+
 }

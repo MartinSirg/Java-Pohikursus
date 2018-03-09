@@ -1,8 +1,8 @@
 package ee.ttu.iti0202.orb;
 
 public class Orb {
-    private String creator;
-    private int energy = 0;
+    protected String creator;
+    protected int energy = 0;
 
     public Orb(String creator) {
         this.creator = creator;
