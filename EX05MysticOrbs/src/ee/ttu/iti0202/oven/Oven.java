@@ -7,9 +7,8 @@ import java.util.Optional;
 
 public class Oven {
     private String name;
-    private ResourceStorage resourceStorage;
-    private int createdOrbsAmount;
-    private boolean broken = false;
+    ResourceStorage resourceStorage;
+    int createdOrbsAmount;
 
 
     public Oven(String name, ResourceStorage resourceStorage) {
@@ -30,19 +29,21 @@ public class Oven {
     }
 
     public boolean isBroken() {
-        return broken;
+        return createdOrbsAmount >= 15;
     }
 
     public Optional<Orb> craftOrb() {
         boolean enoughPearl = resourceStorage.hasEnoughResource("pearl", 1);
         boolean enoughSilver = resourceStorage.hasEnoughResource("silver", 1);
 
-        if (!broken && enoughPearl && enoughSilver) {
+        if (!isBroken() && enoughPearl && enoughSilver) {
             Orb newOrb = new Orb(name);
             resourceStorage.takeResource("silver", 1);
             resourceStorage.takeResource("pearl", 1);
             newOrb.charge("silver", 1);
             newOrb.charge("pearl", 1);
+            createdOrbsAmount += 1;
+            if (createdOrbsAmount >= 15) {broken = true;}
             return Optional.of(newOrb);
         } else {
             return Optional.empty();
