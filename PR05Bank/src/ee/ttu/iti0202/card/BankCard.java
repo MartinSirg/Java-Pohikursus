@@ -26,6 +26,7 @@ public abstract class BankCard {
     }
 
     public abstract boolean withdraw(BigDecimal value);
+
     public void setBank(Bank bank) {
         this.bank = bank;
 

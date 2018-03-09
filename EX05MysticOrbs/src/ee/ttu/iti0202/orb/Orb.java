@@ -20,6 +20,10 @@ public class Orb {
         return energy;
     }
 
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
+
     @Override
     public String toString() {
         return String.format("Orb by %s", creator);
