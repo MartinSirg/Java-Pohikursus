@@ -1,9 +1,10 @@
 package ee.ttu.iti0202.factory;
 
-// import ee.ttu.iti0202.exceptions.CannotFixException;
+import ee.ttu.iti0202.exceptions.CannotFixException;
 import ee.ttu.iti0202.orb.Orb;
-//import ee.ttu.iti0202.oven.MagicOven;
+import ee.ttu.iti0202.oven.MagicOven;
 import ee.ttu.iti0202.oven.Oven;
+import ee.ttu.iti0202.oven.SpaceOven;
 import ee.ttu.iti0202.storage.ResourceStorage;
 
 import java.util.ArrayList;
@@ -37,17 +38,31 @@ public class OrbFactory {
         for (Oven o : ovens) {
             if (o.isBroken() && o.getRank() == 1) { // regular Oven cant be repaired.
                 ovensThatCannotBeFixed.add(o);
-            }
-            /* HELP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            KUIDAS PÜÜDA ERINDIT ENUM-idega
-
             } else if (o.isBroken()) {
                 if (o instanceof MagicOven) { // MagicOven case (teine case spaceOven)
-                    try { ((MagicOven) o).fix(); }
-                    catch (CannotFixException //NO RESOURCES ENUM???) {}
-                    catch (CannotFixException //MAX TIMES REPAIRED ENUM???) {}
+                    try {
+                        ((MagicOven) o).fix();
+                    } catch (CannotFixException e) {
+                        if (e.getReason() == CannotFixException.Reason.NOT_ENOUGH_RESOURCES) {
+                            continue;
+                        } else if (e.getReason() == CannotFixException.Reason.FIXED_MAXIMUM_TIMES) {
+                            ovensThatCannotBeFixed.add(o);
+                            continue;
+                        }
+                    }
+                } else if (o instanceof SpaceOven) {
+                    try {
+                        ((SpaceOven) o).fix();
+                    } catch (CannotFixException e) {
+                        if (e.getReason() == CannotFixException.Reason.NOT_ENOUGH_RESOURCES) {
+                            continue;
+                        } else if (e.getReason() == CannotFixException.Reason.FIXED_MAXIMUM_TIMES) {
+                            ovensThatCannotBeFixed.add(o);
+                            continue;
+                        }
+                    }
                 }
-            }!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+            }
             Optional<Orb> orbOptional = o.craftOrb();
             if (orbOptional.isPresent()) {
                 producedOrbs.add(orbOptional.get());
