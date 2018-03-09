@@ -1,6 +1,6 @@
 package ee.ttu.iti0202.orb;
 
-public class SpaceOrb extends Orb{
+public class SpaceOrb extends Orb {
     public SpaceOrb(String creator) {
         super(creator);
         energy = 100;
