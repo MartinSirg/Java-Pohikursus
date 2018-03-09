@@ -1,6 +1,8 @@
 package ee.ttu.iti0202.factory;
 
+// import ee.ttu.iti0202.exceptions.CannotFixException;
 import ee.ttu.iti0202.orb.Orb;
+//import ee.ttu.iti0202.oven.MagicOven;
 import ee.ttu.iti0202.oven.Oven;
 import ee.ttu.iti0202.storage.ResourceStorage;
 
@@ -12,6 +14,7 @@ public class OrbFactory {
     private ResourceStorage storage;
     private List<Oven> ovens = new ArrayList<>();
     private List<Orb> producedOrbs = new ArrayList<>();
+    private List<Oven> ovensThatCannotBeFixed = new ArrayList<>();
 
     public OrbFactory(ResourceStorage resourceStorage) {
         storage = resourceStorage;
@@ -32,6 +35,19 @@ public class OrbFactory {
         int start = producedOrbs.size();
 
         for (Oven o : ovens) {
+            if (o.isBroken() && o.getRank() == 1) { // regular Oven cant be repaired.
+                ovensThatCannotBeFixed.add(o);
+            }
+            /* HELP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            KUIDAS PÜÜDA ERINDIT ENUM-idega
+
+            } else if (o.isBroken()) {
+                if (o instanceof MagicOven) { // MagicOven case (teine case spaceOven)
+                    try { ((MagicOven) o).fix(); }
+                    catch (CannotFixException //NO RESOURCES ENUM???) {}
+                    catch (CannotFixException //MAX TIMES REPAIRED ENUM???) {}
+                }
+            }!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
             Optional<Orb> orbOptional = o.craftOrb();
             if (orbOptional.isPresent()) {
                 producedOrbs.add(orbOptional.get());
@@ -55,5 +71,16 @@ public class OrbFactory {
             return result;
         }
         return producedOrbs;
+    }
+
+    public List<Oven> getOvensThatCannotBeFixed() {
+        return ovensThatCannotBeFixed;
+    }
+
+    public void getRidOfOvensThatCannotBeFixed() {
+        for (Oven o: ovensThatCannotBeFixed) {
+            ovens.remove(o);
+        }
+        ovensThatCannotBeFixed.clear();
     }
 }

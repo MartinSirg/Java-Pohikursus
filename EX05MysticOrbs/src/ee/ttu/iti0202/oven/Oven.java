@@ -5,7 +5,7 @@ import ee.ttu.iti0202.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class Oven {
+public class Oven implements Comparable<Oven> {
     String name;
     ResourceStorage resourceStorage;
     int createdOrbsAmount;
@@ -29,6 +29,10 @@ public class Oven {
         return createdOrbsAmount;
     }
 
+    public int getRank() {
+        return 1;
+    }
+
     public boolean isBroken() {
         return createdOrbsAmount >= LIMIT;
     }
@@ -48,5 +52,28 @@ public class Oven {
         } else {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public int compareTo(Oven o) {
+        // getRank returns : spaceOven => 3, magicOven => 2, oven => 1
+        // brokenness
+        if (isBroken() && !o.isBroken()) { return -1; }
+        if (!isBroken() && o.isBroken()) { return 1; }
+        if (isBroken() == o.isBroken()) {   // both oven's broken state is the same
+            if (getRank() > o.getRank()) { return 1; }
+            if (getRank() < o.getRank()) { return -1; }
+            if (getRank() == 2 && o.getRank() == 2) { // both are magical
+                if (this.getCreatedOrbsAmount() % 2 == 1 && o.getCreatedOrbsAmount() % 2 == 0) { return 1; }
+                if (this.getCreatedOrbsAmount() % 2 == 0 && o.getCreatedOrbsAmount() % 2 == 1) { return -1; }
+                if (this.getCreatedOrbsAmount() == o.getCreatedOrbsAmount()) {
+                    if (this instanceof InfinityMagicOven && !(o instanceof InfinityMagicOven)) { return 1; }
+                    if (!(this instanceof InfinityMagicOven) && o instanceof InfinityMagicOven) { return -1; }
+                }
+            }
+            if (this.getCreatedOrbsAmount() < o.getCreatedOrbsAmount()) { return 1; }
+            if (this.getCreatedOrbsAmount() > o.getCreatedOrbsAmount()) { return -1; }
+        }
+        return name.compareTo(o.getName());
     }
 }
