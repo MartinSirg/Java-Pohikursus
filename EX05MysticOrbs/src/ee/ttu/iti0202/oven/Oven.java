@@ -6,9 +6,10 @@ import ee.ttu.iti0202.storage.ResourceStorage;
 import java.util.Optional;
 
 public class Oven {
-    private String name;
+    String name;
     ResourceStorage resourceStorage;
     int createdOrbsAmount;
+    private static final int LIMIT = 15;
 
 
     public Oven(String name, ResourceStorage resourceStorage) {
@@ -29,7 +30,7 @@ public class Oven {
     }
 
     public boolean isBroken() {
-        return createdOrbsAmount >= 15;
+        return createdOrbsAmount >= LIMIT;
     }
 
     public Optional<Orb> craftOrb() {
