@@ -43,7 +43,6 @@ public class Oven {
             newOrb.charge("silver", 1);
             newOrb.charge("pearl", 1);
             createdOrbsAmount += 1;
-            if (createdOrbsAmount >= 15) {broken = true;}
             return Optional.of(newOrb);
         } else {
             return Optional.empty();
