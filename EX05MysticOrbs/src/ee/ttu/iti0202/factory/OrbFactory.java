@@ -83,4 +83,8 @@ public class OrbFactory {
         }
         ovensThatCannotBeFixed.clear();
     }
+
+    public void optimizeOvensOrder() {
+        System.out.println("DO AFTER EXCEPTIONS");
+    }
 }
