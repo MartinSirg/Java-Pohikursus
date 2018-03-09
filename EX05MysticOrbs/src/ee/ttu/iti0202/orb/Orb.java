@@ -11,7 +11,7 @@ public class Orb {
     public void charge(String resource, int amount) {
         String buffer = resource.replace(" ", "");
 
-        if (!resource.toLowerCase().equals("dust") && buffer.length() != 0) {
+        if (!resource.toLowerCase().equals("dust") && buffer.length() != 0 && amount >= 1) {
             energy += resource.length() * amount; // possible viga: kasuta resource.len asemel buffer.len
         }
     }

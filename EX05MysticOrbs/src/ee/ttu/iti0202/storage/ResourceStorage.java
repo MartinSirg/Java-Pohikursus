@@ -19,7 +19,7 @@ public class ResourceStorage {
 
     public void addResource(String resource, int amount) {
         resource = resource.toLowerCase();
-        if (amount >= 1) {
+        if (amount >= 1 && !resource.replace(" ", "").equals("")) {
             if (!resource.equals("") && !resources.containsKey(resource)) {
                 resources.put(resource, amount);
             } else if (!resource.equals("") && resources.containsKey(resource)) {

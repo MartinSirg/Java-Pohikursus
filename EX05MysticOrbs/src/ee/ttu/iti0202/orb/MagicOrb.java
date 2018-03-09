@@ -7,7 +7,9 @@ public class MagicOrb extends Orb {
 
     @Override
     public void charge(String resource, int amount) {
-        super.charge(resource, amount * 2);
+        if (amount >= 1) {
+            super.charge(resource, amount * 2);
+        }
     }
 
     @Override
