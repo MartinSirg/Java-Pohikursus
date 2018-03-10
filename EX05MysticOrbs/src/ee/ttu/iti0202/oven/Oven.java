@@ -60,28 +60,37 @@ public class Oven implements Comparable<Oven> {
         // brokenness
         if (isBroken() && !o.isBroken()) {
             return -1;
-        } else if (!isBroken() && o.isBroken()) {
+        }
+        if (!isBroken() && o.isBroken()) {
             return 1;
-        } else if (isBroken() == o.isBroken()) {   // both oven's broken state is the same
+        }
+        if (isBroken() == o.isBroken()) {   // both oven's broken state is the same
             if (getRank() > o.getRank()) {
                 return 1;
-            } else if (getRank() < o.getRank()) {
+            }
+            if (getRank() < o.getRank()) {
                 return -1;
-            } else if (getRank() == 2 && o.getRank() == 2) { // both are magical
+            }
+            if (getRank() == 2 && o.getRank() == 2) { // both are magical
                 if (this.getCreatedOrbsAmount() % 2 == 1 && o.getCreatedOrbsAmount() % 2 == 0) {
                     return 1;
-                } else if (this.getCreatedOrbsAmount() % 2 == 0 && o.getCreatedOrbsAmount() % 2 == 1) {
+                }
+                if (this.getCreatedOrbsAmount() % 2 == 0 && o.getCreatedOrbsAmount() % 2 == 1) {
                     return -1;
-                } else if (this.getCreatedOrbsAmount() == o.getCreatedOrbsAmount()) {
+                }
+                if (this.getCreatedOrbsAmount() == o.getCreatedOrbsAmount()) {
                     if (this instanceof InfinityMagicOven && !(o instanceof InfinityMagicOven)) {
                         return 1;
-                    } else if (!(this instanceof InfinityMagicOven) && o instanceof InfinityMagicOven) {
+                    }
+                    if (!(this instanceof InfinityMagicOven) && o instanceof InfinityMagicOven) {
                         return -1;
                     }
                 }
-            } else if (this.getCreatedOrbsAmount() < o.getCreatedOrbsAmount()) {
+            }
+            if (this.getCreatedOrbsAmount() < o.getCreatedOrbsAmount()) {
                 return 1;
-            } else if (this.getCreatedOrbsAmount() > o.getCreatedOrbsAmount()) {
+            }
+            if (this.getCreatedOrbsAmount() > o.getCreatedOrbsAmount()) {
                 return -1;
             }
         }
