@@ -8,6 +8,7 @@ import ee.ttu.iti0202.oven.SpaceOven;
 import ee.ttu.iti0202.storage.ResourceStorage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +40,7 @@ public class OrbFactory {
             if (o.isBroken() && o.getRank() == 1) { // regular Oven cant be repaired.
                 ovensThatCannotBeFixed.add(o);
             } else if (o.isBroken()) {
-                if (o instanceof MagicOven) { // MagicOven case (teine case spaceOven)
+                if (o instanceof MagicOven) { // MagicOven case
                     try {
                         ((MagicOven) o).fix();
                     } catch (CannotFixException e) {
@@ -50,7 +51,7 @@ public class OrbFactory {
                             continue;
                         }
                     }
-                } else if (o instanceof SpaceOven) {
+                } else if (o instanceof SpaceOven) { // space oven case
                     try {
                         ((SpaceOven) o).fix();
                     } catch (CannotFixException e) {
@@ -100,6 +101,6 @@ public class OrbFactory {
     }
 
     public void optimizeOvensOrder() {
-        System.out.println("DO AFTER EXCEPTIONS");
+        Collections.sort(ovens);
     }
 }
