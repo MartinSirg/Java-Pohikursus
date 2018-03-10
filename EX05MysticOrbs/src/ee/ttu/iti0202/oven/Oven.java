@@ -58,21 +58,32 @@ public class Oven implements Comparable<Oven> {
     public int compareTo(Oven o) {
         // getRank returns : spaceOven => 3, magicOven => 2, oven => 1
         // brokenness
-        if (isBroken() && !o.isBroken()) { return -1; }
-        if (!isBroken() && o.isBroken()) { return 1; }
-        if (isBroken() == o.isBroken()) {   // both oven's broken state is the same
-            if (getRank() > o.getRank()) { return 1; }
-            if (getRank() < o.getRank()) { return -1; }
-            if (getRank() == 2 && o.getRank() == 2) { // both are magical
-                if (this.getCreatedOrbsAmount() % 2 == 1 && o.getCreatedOrbsAmount() % 2 == 0) { return 1; }
-                if (this.getCreatedOrbsAmount() % 2 == 0 && o.getCreatedOrbsAmount() % 2 == 1) { return -1; }
-                if (this.getCreatedOrbsAmount() == o.getCreatedOrbsAmount()) {
-                    if (this instanceof InfinityMagicOven && !(o instanceof InfinityMagicOven)) { return 1; }
-                    if (!(this instanceof InfinityMagicOven) && o instanceof InfinityMagicOven) { return -1; }
+        if (isBroken() && !o.isBroken()) {
+            return -1;
+        } else if (!isBroken() && o.isBroken()) {
+            return 1;
+        } else if (isBroken() == o.isBroken()) {   // both oven's broken state is the same
+            if (getRank() > o.getRank()) {
+                return 1;
+            } else if (getRank() < o.getRank()) {
+                return -1;
+            } else if (getRank() == 2 && o.getRank() == 2) { // both are magical
+                if (this.getCreatedOrbsAmount() % 2 == 1 && o.getCreatedOrbsAmount() % 2 == 0) {
+                    return 1;
+                } else if (this.getCreatedOrbsAmount() % 2 == 0 && o.getCreatedOrbsAmount() % 2 == 1) {
+                    return -1;
+                } else if (this.getCreatedOrbsAmount() == o.getCreatedOrbsAmount()) {
+                    if (this instanceof InfinityMagicOven && !(o instanceof InfinityMagicOven)) {
+                        return 1;
+                    } else if (!(this instanceof InfinityMagicOven) && o instanceof InfinityMagicOven) {
+                        return -1;
+                    }
                 }
+            } else if (this.getCreatedOrbsAmount() < o.getCreatedOrbsAmount()) {
+                return 1;
+            } else if (this.getCreatedOrbsAmount() > o.getCreatedOrbsAmount()) {
+                return -1;
             }
-            if (this.getCreatedOrbsAmount() < o.getCreatedOrbsAmount()) { return 1; }
-            if (this.getCreatedOrbsAmount() > o.getCreatedOrbsAmount()) { return -1; }
         }
         return name.compareTo(o.getName());
     }
