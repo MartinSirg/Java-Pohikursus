@@ -53,6 +53,14 @@ public class WaterContainer {
         }
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public List<CoffeeMachine> getMachines() {
+        return machines;
+    }
+
     /**
      * if water container is not full, fills it
      */
@@ -119,7 +127,7 @@ public class WaterContainer {
     }
 
     public boolean enoughWater(int amount) {
-        return amount >= capacity;
+        return amount <= capacity;
     }
 
     @Override
