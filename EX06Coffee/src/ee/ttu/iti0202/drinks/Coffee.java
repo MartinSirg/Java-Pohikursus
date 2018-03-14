@@ -1,10 +1,17 @@
 package ee.ttu.iti0202.drinks;
 
-public class Coffee extends Drink{
+import ee.ttu.iti0202.machines.CoffeeMachine;
+
+public class Coffee extends Drink {
     static final int WATER = 200;
 
-    Coffee() {
-        super();
-        // logger.info("Made a cup of covfefe.");
+    Coffee(CoffeeMachine creator) {
+        super(creator);
+        logger.info(String.format("Made a cup of covfefe at %s.", creator.getName()));
+    }
+
+    @Override
+    public String toString() {
+        return "Covfefe";
     }
 }

@@ -13,7 +13,7 @@ public abstract class CoffeeMachine {
     Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     int trashCollector = 0;
     WaterContainer container;
-    int selected;
+    String name;
 
 
     /**
@@ -21,14 +21,18 @@ public abstract class CoffeeMachine {
      *
      * @param container watercontainer object, that will be attatched to machine.
      */
-    CoffeeMachine(WaterContainer container) {
+    CoffeeMachine(WaterContainer container, String name) {
         this.container = container;
+        this.name = name;
     }
 
     public WaterContainer getContainer() {
         return container;
     }
 
+    public String getName() {
+        return name;
+    }
 
     /**
      * @return true if trash collector is full
@@ -74,6 +78,7 @@ public abstract class CoffeeMachine {
 
     }
     public abstract void selectDrink(Drink.Drinks drinks);
+
 
     public abstract Drink start() throws Exception;
 

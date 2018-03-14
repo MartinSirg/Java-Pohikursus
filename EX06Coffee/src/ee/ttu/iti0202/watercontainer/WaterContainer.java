@@ -83,13 +83,14 @@ public class WaterContainer {
      * if not Throws exception
      * @param amount of water to be drained
      */
-    public void drainWater(int amount) throws WaterContainerException {
+    public void drainWater(int amount, CoffeeMachine machine) throws WaterContainerException {
         try {
             if (amount > capacity) {
                 throw new WaterContainerException(String.format("Not enough water in container number %d", id));
             } else {
                 capacity -= amount;
-                logger.info(String.format("Drained %d ml from container number %d", amount, id));
+                logger.finer(String.format("Drained %d ml from container number %d attached to %s",
+                        amount, id, machine.getName()));
             }
         } catch (WaterContainerException e) {
             logger.severe(e.getMessage());
