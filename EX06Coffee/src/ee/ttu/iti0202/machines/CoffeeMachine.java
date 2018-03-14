@@ -5,7 +5,6 @@ import ee.ttu.iti0202.exceptions.CoffeeMachineException;
 import ee.ttu.iti0202.exceptions.WaterContainerException;
 import ee.ttu.iti0202.watercontainer.WaterContainer;
 
-import java.util.Optional;
 import java.util.logging.Logger;
 
 public abstract class CoffeeMachine {
