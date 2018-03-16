@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public abstract class Drink {
     Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public enum Drinks { COFFEE, CAPPUCCINO, HOT_COCOA, ESPRESSO, WATER }
-    CoffeeMachine creator;
+    private CoffeeMachine creator;
 
     public Drink(CoffeeMachine creator) {
         this.creator = creator;
