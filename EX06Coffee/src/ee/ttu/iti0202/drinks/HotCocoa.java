@@ -12,6 +12,6 @@ public class HotCocoa extends Drink {
 
     @Override
     public String toString() {
-        return "HotCocoa";
+        return "HotCocoa" + super.toString();
     }
 }

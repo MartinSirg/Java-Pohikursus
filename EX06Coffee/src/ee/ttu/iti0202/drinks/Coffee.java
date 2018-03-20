@@ -12,6 +12,6 @@ public class Coffee extends Drink {
 
     @Override
     public String toString() {
-        return "Covfefe";
+        return "Covfefe" + super.toString();
     }
 }

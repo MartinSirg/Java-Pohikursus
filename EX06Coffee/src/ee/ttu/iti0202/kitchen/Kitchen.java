@@ -31,9 +31,16 @@ public class Kitchen {
         return order;
     }
 
+    public Map<CoffeeMachine, List<Drink.Drinks>> getSpecifiedOrder() {
+        return specifiedOrder;
+    }
+
     public Kitchen addMachine(CoffeeMachine machine) {
         if (!machines.contains(machine)) {
             machines.add(machine);
+            logger.info(String.format("Added %s to kitchen.", machine.getName()));
+        } else {
+            logger.warning("Tried adding machine, to kitchen, that is already in that kitchen.");
         }
         return this;
     }

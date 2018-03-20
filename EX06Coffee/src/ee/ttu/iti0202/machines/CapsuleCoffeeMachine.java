@@ -1,6 +1,8 @@
 package ee.ttu.iti0202.machines;
 
+import ee.ttu.iti0202.capsule.Capsule;
 import ee.ttu.iti0202.drinks.Drink;
+import ee.ttu.iti0202.drinks.Water;
 import ee.ttu.iti0202.exceptions.CoffeeMachineException;
 import ee.ttu.iti0202.exceptions.DrinkException;
 import ee.ttu.iti0202.exceptions.WaterContainerException;
@@ -9,7 +11,7 @@ import ee.ttu.iti0202.watercontainer.WaterContainer;
 import java.util.Optional;
 
 public class CapsuleCoffeeMachine extends CoffeeMachine {
-    private Drink.Drinks capsule = null;
+    private Capsule capsule = null;
 
     public CapsuleCoffeeMachine(WaterContainer container, String name) {
         super(container, name);
@@ -22,7 +24,7 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
 
     @Override
     public void selectDrink(Drink.Drinks d) {
-        capsule = d;
+        capsule = new Capsule(d);   // inserts new capsule into machine
         logger.fine(String.format("Inserted %s capsule into %s", d, name));
     }
 
@@ -35,25 +37,30 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
                     + String.format("(machine: %s)", name));
         }
         if (capsule == null) {
-            return Drink.factory(Drink.Drinks.WATER, this).get();
+            if (container.enoughWater(Drink.getWaterReq(Drink.Drinks.WATER).get())) {
+                container.drainWater(Drink.getWaterReq(Drink.Drinks.WATER).get(), this);
+                return Drink.factory(Drink.Drinks.WATER, this).get(); //doesn't produce trash
+            } else {
+                throw new WaterContainerException("Not enough water in water container."
+                        + String.format("(machine: %s)", name));
+            }
+
         }
-        if (!Drink.getWaterReq(capsule).isPresent()) {
-            throw new DrinkException("Selected capsule(enum) doesn't exist in Drink.getWaterReq() if else statements.");
-        } else {
-            waterNeeded = Drink.getWaterReq(capsule).get();
-        }
+        waterNeeded = capsule.waterNeeded();
         if (!container.enoughWater(waterNeeded)) {
-            throw new WaterContainerException("Not enough water in watercontainer."
+            throw new WaterContainerException("Not enough water in water container."
                     + String.format("(machine: %s)", name));
         } else {
-            Optional<Drink> drinkToBeMade = Drink.factory(capsule, this);
-            if (!drinkToBeMade.isPresent()) {
+            Optional<Drink> drinkToMake = Drink.factory(capsule.useCapsule(), this);
+            if (!drinkToMake.isPresent()) {
                 throw new DrinkException("Selected capsule(enum) doesn't exist in Drink.factory() if else statements.");
+            } else if (drinkToMake.get() instanceof Water) {
+                container.drainWater(waterNeeded, this);
+                return drinkToMake.get(); //doesn't produce trash
             } else {
-                capsule = Drink.Drinks.WATER; // water capsule is an empty capsule
                 trashCollector += 1;
                 container.drainWater(waterNeeded, this);
-                return drinkToBeMade.get();
+                return drinkToMake.get();
             }
         }
     }
@@ -61,5 +68,15 @@ public class CapsuleCoffeeMachine extends CoffeeMachine {
     public Drink start(Drink.Drinks d) throws Exception {
         selectDrink(d);
         return start();
+    }
+
+    public void removeCapsule() {
+        if (capsule != null) {
+            capsule = null;
+        }
+    }
+
+    public Capsule getCapsule() {
+        return capsule;
     }
 }

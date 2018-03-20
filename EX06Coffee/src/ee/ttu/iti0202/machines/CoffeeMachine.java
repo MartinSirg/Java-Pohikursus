@@ -22,6 +22,8 @@ public abstract class CoffeeMachine {
      */
     CoffeeMachine(WaterContainer container, String name) {
         this.container = container;
+        try { container.addMachine(this); }
+        catch (Exception e) { logger.severe(e.getMessage() + " (CoffeeMachine constructor)"); }
         this.name = name;
     }
 
@@ -31,6 +33,10 @@ public abstract class CoffeeMachine {
 
     public String getName() {
         return name;
+    }
+
+    public int getTrashCollector() {
+        return trashCollector;
     }
 
     /**
@@ -63,16 +69,20 @@ public abstract class CoffeeMachine {
      * @param newContainer new water container
      */
     public void changeContainer(WaterContainer newContainer) {
-        try {
-            container.removeMachine(this);
-        } catch (WaterContainerException e) {
-            logger.severe(e.getMessage());
-        }
-        container = newContainer;
-        try {
-            newContainer.addMachine(this);
-        } catch (WaterContainerException e) {
-            logger.severe(e.getMessage());
+        if (container == newContainer) {
+            logger.warning("Can't change the container, because new container is the old container.");
+        } else {
+            try {
+                container.removeMachine(this);
+            } catch (WaterContainerException e) {
+                logger.severe(e.getMessage());
+            }
+            container = newContainer;
+            try {
+                newContainer.addMachine(this);
+            } catch (WaterContainerException e) {
+                logger.severe(e.getMessage());
+            }
         }
 
     }

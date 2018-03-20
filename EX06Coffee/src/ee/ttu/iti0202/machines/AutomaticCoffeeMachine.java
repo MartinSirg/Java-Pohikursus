@@ -1,6 +1,7 @@
 package ee.ttu.iti0202.machines;
 
 import ee.ttu.iti0202.drinks.Drink;
+import ee.ttu.iti0202.drinks.Water;
 import ee.ttu.iti0202.exceptions.CoffeeMachineException;
 import ee.ttu.iti0202.exceptions.DrinkException;
 import ee.ttu.iti0202.exceptions.WaterContainerException;
@@ -13,6 +14,10 @@ public class AutomaticCoffeeMachine extends CoffeeMachine {
 
     public AutomaticCoffeeMachine(WaterContainer container, String name) {
         super(container, name);
+    }
+
+    public Drink.Drinks getSelectedDrink() {
+        return selectedDrink;
     }
 
     @Override
@@ -35,19 +40,20 @@ public class AutomaticCoffeeMachine extends CoffeeMachine {
             waterNeeded = Drink.getWaterReq(selectedDrink).get();
         }
         if (!container.enoughWater(waterNeeded)) {
-            System.out.println(waterNeeded);
-            System.out.println(container.getCapacity());
             throw new WaterContainerException("Not enough water in water container."
                     + String.format("(machine: %s)", name));
         }
 
-        Optional<Drink> drinkToBeMade = Drink.factory(selectedDrink, this);
-        if (!drinkToBeMade.isPresent()) {
+        Optional<Drink> drinkToMake = Drink.factory(selectedDrink, this);
+        if (!drinkToMake.isPresent()) {
             throw new DrinkException("Selected drink(enum) doesn't exist in Drink.factory() if else statements.");
-        } else {
-            trashCollector += 1;
+        } else if (drinkToMake.get() instanceof Water) { // doesn't make trash
             container.drainWater(waterNeeded, this);
-            return drinkToBeMade.get();
+            return drinkToMake.get();
+        } else {
+            container.drainWater(waterNeeded, this);
+            trashCollector += 1;
+            return drinkToMake.get();
         }
     }
 }

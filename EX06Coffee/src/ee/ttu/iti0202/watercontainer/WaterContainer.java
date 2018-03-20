@@ -13,7 +13,7 @@ public class WaterContainer {
 
     private Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private int maxCapacity; // in ml
-    private int capacity = 1000, id;
+    private int capacity, id;
     private List<CoffeeMachine> machines = new ArrayList<>();
 
 
@@ -23,6 +23,7 @@ public class WaterContainer {
      */
     public WaterContainer() {
         maxCapacity = 1000;
+        capacity = maxCapacity;
         id = nextId++;
         logger.info(String.format("Created WaterContainer number %d with a capacity of %d", id, 1000));
     }
@@ -46,8 +47,10 @@ public class WaterContainer {
                 logger.info(String.format("Created WaterContainer number %d with a capacity of %d", id,
                         customCapacity));
                 this.maxCapacity = customCapacity;
+                capacity = maxCapacity;
             }
         } catch (WaterContainerException e) {
+            capacity = maxCapacity;
             logger.warning(e.getMessage()
                     + String.format(". Created WaterContainer number %d with a capacity of %d", id, maxCapacity));
         }
@@ -55,6 +58,10 @@ public class WaterContainer {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
     }
 
     public List<CoffeeMachine> getMachines() {
@@ -83,7 +90,7 @@ public class WaterContainer {
      * if not Throws exception
      * @param amount of water to be drained
      */
-    public void drainWater(int amount, CoffeeMachine machine) throws WaterContainerException {
+    public void drainWater(int amount, CoffeeMachine machine) {
         try {
             if (amount > capacity) {
                 throw new WaterContainerException(String.format("Not enough water in container number %d", id));
@@ -105,7 +112,7 @@ public class WaterContainer {
      */
     public void addMachine(CoffeeMachine machine) throws WaterContainerException {
         if (machines.contains(machine)) {
-            throw new WaterContainerException("Tried attaching a machine to the container that is already attatched "
+            throw new WaterContainerException("Tried attaching a machine to the container that is already attached "
                     + "to it.");
         }  else {
             machines.add(machine);
@@ -120,7 +127,7 @@ public class WaterContainer {
      */
     public void removeMachine(CoffeeMachine machine) throws WaterContainerException {
         if (!machines.contains(machine)) {
-            throw new WaterContainerException("Tried detaching a machine that isn't attatched to this container");
+            throw new WaterContainerException("Tried detaching a machine that isn't attached to this container");
         } else {
             machines.remove(machine);
             logger.info(String.format("Removed machine from container number %d", id));
@@ -128,7 +135,7 @@ public class WaterContainer {
     }
 
     public boolean enoughWater(int amount) {
-        return amount <= capacity;
+        return amount <= capacity && amount >= 1;
     }
 
     @Override

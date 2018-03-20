@@ -12,6 +12,6 @@ public class Water extends Drink {
 
     @Override
     public String toString() {
-        return "Water";
+        return "Water" + super.toString();
     }
 }
