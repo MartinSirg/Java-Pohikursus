@@ -13,8 +13,9 @@ public class Capsule {
     }
 
     public Drink.Drinks useCapsule() {
-        if (contains == null) { return Drink.Drinks.WATER;}
-        else {
+        if (contains == null) {
+            return Drink.Drinks.WATER;
+        } else {
             Drink.Drinks result = contains;
             contains = null;
             return result;

@@ -22,8 +22,11 @@ public abstract class CoffeeMachine {
      */
     CoffeeMachine(WaterContainer container, String name) {
         this.container = container;
-        try { container.addMachine(this); }
-        catch (Exception e) { logger.severe(e.getMessage() + " (CoffeeMachine constructor)"); }
+        try {
+            container.addMachine(this);
+        } catch (Exception e) {
+            logger.severe(e.getMessage() + " (CoffeeMachine constructor)");
+        }
         this.name = name;
     }
 
