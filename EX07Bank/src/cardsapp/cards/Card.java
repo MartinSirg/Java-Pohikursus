@@ -1,12 +1,11 @@
-package cardsApp.cards;
+package cardsapp.cards;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.Scene;
 
 public  abstract class Card {
     private StringProperty cardNumber, owner, limit;
-    public enum Type{DEBIT, CREDIT}
+    public enum Type { DEBIT, CREDIT }
 
     Card(String cardNumber, String owner, String limit) {
         this.cardNumber = new SimpleStringProperty(cardNumber);
@@ -14,7 +13,7 @@ public  abstract class Card {
         this.limit = new SimpleStringProperty(limit);
     }
 
-    public static Card cardFactory(String cardNumber, String owner, Type type, String limit){
+    public static Card cardFactory(String cardNumber, String owner, Type type, String limit) {
         if (type == Type.DEBIT) {
             return new DebitCard(cardNumber, owner);
         } else {

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardsApp.cards.view.BankCardsController">
+<BorderPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cardsapp.cards.view.BankCardsController">
    <bottom>
       <Button fx:id="newButton" mnemonicParsing="false" onAction="#newButtonClicked" text="New card" BorderPane.alignment="CENTER_RIGHT">
          <BorderPane.margin>

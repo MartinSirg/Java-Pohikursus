@@ -1,20 +1,25 @@
-package cardsApp.cards.view;
+package cardsapp.cards.view;
 
-import cardsApp.cards.Card;
-import cardsApp.cards.CreditCard;
-import cardsApp.cards.Main;
+import cardsapp.cards.Card;
+import cardsapp.cards.Main;
 
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
 
-public class BankCardsController extends TextFieldTableCell{
-    @FXML private TableView tableView;
+public class BankCardsController extends TextFieldTableCell {
 
+    @FXML private TableView tableView;
     @FXML private TableColumn cardColumn;
     @FXML private TableColumn nameColumn;
     @FXML private TableColumn limitColumn;
@@ -25,17 +30,18 @@ public class BankCardsController extends TextFieldTableCell{
     @FXML private TextField ownerTextField;
     @FXML private TextField limitTextField;
     @FXML private ToggleGroup radioButtonsGroup;
+
     private Card.Type selected;
     private Main main;
 
-    @Override
+    /*@Override
     public void startEdit() {
         TableRow<Card> tableRow = getTableRow();
         Card card = tableRow.getItem();
         if (card instanceof CreditCard) {
             super.startEdit();
         }
-    }
+    }*/
     @FXML public void initialize() {
         creditButton.setSelected(true);
         tableView.setPlaceholder(new Label("No data yet."));
@@ -45,7 +51,7 @@ public class BankCardsController extends TextFieldTableCell{
         limitColumn.setCellValueFactory(new PropertyValueFactory<Card, String>("limit"));
         //luban editida nime
         nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        nameColumn.setOnEditCommit( //vajab selgitust
+        nameColumn.setOnEditCommit(//vajab selgitust
                 (EventHandler<TableColumn.CellEditEvent<Card, String>>) t -> (t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
                 ).setOwner(t.getNewValue())

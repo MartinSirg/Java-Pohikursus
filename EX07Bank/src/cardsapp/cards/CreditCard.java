@@ -1,8 +1,8 @@
-package cardsApp.cards;
+package cardsapp.cards;
 
 import javafx.beans.property.StringProperty;
 
-public class CreditCard extends Card {
+class CreditCard extends Card {
     private StringProperty limit;
 
     CreditCard(String cardNum, String owner, String limit){

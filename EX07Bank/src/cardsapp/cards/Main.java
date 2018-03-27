@@ -1,6 +1,6 @@
-package cardsApp.cards;
+package cardsapp.cards;
 
-import cardsApp.cards.view.BankCardsController;
+import cardsapp.cards.view.BankCardsController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
