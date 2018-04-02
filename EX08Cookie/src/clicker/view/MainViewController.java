@@ -63,25 +63,23 @@ public class MainViewController {
     public void initialize() {
         stalinTato.setPickOnBounds(false);
 
+        initializeBinds();
+        initializeListeners();
+        initializeTimelines();
+    }
+
+    private void initializeTimelines() {
         // initial timeline configs
         imageTimeline.setCycleCount(2);
         imageTimeline.setAutoReverse(true);
         kolhoosTimeline.setCycleCount(Animation.INDEFINITE);
         gulagTimeline.setCycleCount(Animation.INDEFINITE);
+    }
 
-
-        //bind price labels to price properties
-        shovelPriceLabel.textProperty().bind(shovelPrice.asString());
-        kolhoosPriceLabel.textProperty().bind(kolhoosPrice.asString());
-        gulagPriceLabel.textProperty().bind(gulagPrice.asString());
-
-
-        // potato count && shovel count binds
-        currentPotatoesLabel.textProperty().bind(potatoes.asString("Kardulaid: %d"));
-        currentShovels.textProperty().bind(shovelsCount.asString("Labidad: %d"));
-
-
+    private void initializeListeners() {
+        //when potato amount changes, check button disabled states
         potatoes.addListener((observable, oldValue, newValue) -> changeBtnStates(newValue.intValue()));
+
         //kolhoos visitor count listener
         kolhoosCount.addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() == MAX_KOLHOOS) {
@@ -103,8 +101,20 @@ public class MainViewController {
         textField.textProperty().addListener(observable -> {
             if (textField.getText().equals("pepe")) {
                 hackButton.setVisible(true);
+                System.out.println("Pepe has blessed you with a hack button!!");
             }
         });
+    }
+
+    private void initializeBinds() {
+        //bind price labels to price properties
+        shovelPriceLabel.textProperty().bind(shovelPrice.asString());
+        kolhoosPriceLabel.textProperty().bind(kolhoosPrice.asString());
+        gulagPriceLabel.textProperty().bind(gulagPrice.asString());
+
+        // potato count && shovel count binds
+        currentPotatoesLabel.textProperty().bind(potatoes.asString("Kardulaid: %d"));
+        currentShovels.textProperty().bind(shovelsCount.asString("Labidad: %d"));
     }
 
     private void changeBtnStates(Integer potatoCount) {
