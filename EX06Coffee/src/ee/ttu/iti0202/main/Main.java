@@ -20,7 +20,7 @@ public class Main {
         System.out.println("Orders on the list: " + kitchen1.getOrder().size()); // 3
         List<Drink> filledOrder = kitchen1.fillOrder();
         for (Drink d: filledOrder) {
-            System.out.println(d); // Cappucino, Coffee, Espresso
+            System.out.println(d); // Cappuccino, Coffee, Espresso
         }
         for (int i = 0; i < 10; i++) {
             kitchen1.orderAdd(Drink.Drinks.COFFEE);

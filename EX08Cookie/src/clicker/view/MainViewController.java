@@ -76,13 +76,13 @@ public class MainViewController {
         gulagPriceLabel.textProperty().bind(gulagPrice.asString());
 
 
-        // potato count && shovel count
+        // potato count && shovel count binds
         currentPotatoesLabel.textProperty().bind(potatoes.asString("Kardulaid: %d"));
         currentShovels.textProperty().bind(shovelsCount.asString("Labidad: %d"));
 
 
         potatoes.addListener((observable, oldValue, newValue) -> changeBtnStates(newValue.intValue()));
-        //kolhoos count listener
+        //kolhoos visitor count listener
         kolhoosCount.addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() == MAX_KOLHOOS) {
                 currentKolhoosid.setText(String.format("Vabatahtlikke: MAX %d", newValue.intValue()));
@@ -92,12 +92,14 @@ public class MainViewController {
             updateKolhoosTimeline();
         });
 
-        //gulag count listener
+        //gulag visitor count listener
         gulagCount.addListener((observable, oldValue, newValue) -> {
             currentGulagTourists.setText(String.format("Gulagi kylalisi: %d", newValue.intValue()));
             updateGulagTimeline();
         });
 
+
+        //if pepe is entered, show hack button
         textField.textProperty().addListener(observable -> {
             if (textField.getText().equals("pepe")) {
                 hackButton.setVisible(true);
