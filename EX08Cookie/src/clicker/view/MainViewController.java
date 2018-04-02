@@ -22,7 +22,7 @@ import javafx.util.Duration;
 public class MainViewController {
 
     private static final int TIME = 5100, MAX_KOLHOOS = 50, FIFTY = 50, GULAG_PRICE = 200, GULAG_POWER = 10,
-            MAX_WIDTH = 200;
+            MAX_WIDTH = 200, HACK = 100000;
 
     @FXML private BorderPane root;
 
@@ -211,7 +211,7 @@ public class MainViewController {
 
     @FXML
     public void hackBtnPressed() {
-        potatoes.setValue(potatoes.add(1000).intValue());
+        potatoes.setValue(potatoes.add(HACK).intValue());
     }
 
     @FXML
