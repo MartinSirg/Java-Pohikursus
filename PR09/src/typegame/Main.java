@@ -24,7 +24,6 @@ public class Main extends Application {
             OverviewController controller = loader.getController();
             controller.setMain(this);
             primaryStage.setScene(new Scene(root));
-            primaryStage.setTitle("Äge stopper");
             primaryStage.show();
 
         } catch (IOException e) {
