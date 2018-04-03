@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typegame.view.OverviewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typegame.view.OverviewController">
    <children>
-      <BorderPane fx:id="window" onMouseClicked="#inWindowKeyPressed" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="symbol1" layoutX="140.0" layoutY="92.0" text="a">
+         <font>
+            <Font name="Lucida Sans Typewriter Bold" size="36.0" />
+         </font></Label>
+      <Label fx:id="symbol2" layoutX="322.0" layoutY="163.0" text="b">
+         <font>
+            <Font name="Lucida Sans Typewriter Bold" size="36.0" />
+         </font></Label>
+      <Label fx:id="symbol3" layoutX="1164.0" layoutY="14.0" text="y">
+         <font>
+            <Font name="Lucida Sans Typewriter Bold" size="36.0" />
+         </font></Label>
+      <Label fx:id="scoreLabel" layoutX="534.0" layoutY="50.0" text="Score">
+         <font>
+            <Font name="Lucida Sans Typewriter Bold" size="29.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="greenPop" fitHeight="750.0" fitWidth="1200.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/green.jpg" />
+         </image></ImageView>
+      <ImageView fx:id="redPop" fitHeight="750.0" fitWidth="1200.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/red.jpg" />
+         </image></ImageView>
    </children>
-</AnchorPane>
+</Pane>
