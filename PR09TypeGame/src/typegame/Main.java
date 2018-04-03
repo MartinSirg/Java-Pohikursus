@@ -11,6 +11,7 @@ import typegame.view.OverviewController;
 import java.io.IOException;
 
 public class Main extends Application {
+    private static final int WIDTH = 1200, HEIGHT = 750;
 
     public static void main(String[] args) {
         launch(args);
@@ -24,7 +25,7 @@ public class Main extends Application {
         loader.setLocation(Main.class.getResource("view/Overview.fxml"));
         Pane root = loader.load();
         controller = loader.getController();
-        scene = new Scene(root, 1200, 750);
+        scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setScene(scene);
         primaryStage.show();
         controller.setScene(scene, root);
