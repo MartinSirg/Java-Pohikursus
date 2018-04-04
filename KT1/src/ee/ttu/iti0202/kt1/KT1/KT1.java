@@ -29,4 +29,6 @@ public class KT1 {
         result = result.replace("*", "");
         return result;
     }
+
+
 }
