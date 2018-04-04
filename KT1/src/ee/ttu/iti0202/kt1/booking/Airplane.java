@@ -4,24 +4,24 @@ public class Airplane {
     private String name;
     private int seats;
 
-    Airplane(String name, int seats) {
+    public Airplane(String name, int seats) {
         this.name = name;
         this.seats = seats;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    int getSeats() {
+    public int getSeats() {
         return seats;
     }
 
-    void setSeats(int seats) {
+    public void setSeats(int seats) {
         this.seats = seats;
     }
 }

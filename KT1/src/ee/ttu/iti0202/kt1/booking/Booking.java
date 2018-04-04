@@ -1,27 +1,28 @@
 package ee.ttu.iti0202.kt1.booking;
 
 public class Booking {
-    Airplane airplane;
-    String seatNumber;
 
-    Booking(Airplane airplane, String seatNumber) {
+    private Airplane airplane;
+    private String seatNumber;
+
+    public Booking(Airplane airplane, String seatNumber) {
         this.seatNumber = seatNumber;
         this.airplane = airplane;
     }
 
-    Airplane getAirplane() {
+    public Airplane getAirplane() {
         return airplane;
     }
 
-    void setAirplane(Airplane airplane) {
+    public void setAirplane(Airplane airplane) {
         this.airplane = airplane;
     }
 
-    String getSeatNumber() {
+    public String getSeatNumber() {
         return seatNumber;
     }
 
-    void setSeatNumber(String seatNumber) {
+    public void setSeatNumber(String seatNumber) {
         this.seatNumber = seatNumber;
     }
 

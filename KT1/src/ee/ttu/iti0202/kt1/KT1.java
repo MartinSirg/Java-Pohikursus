@@ -1,7 +1,5 @@
 package ee.ttu.iti0202.kt1;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class KT1 {
 

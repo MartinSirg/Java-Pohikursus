@@ -31,17 +31,17 @@ public class Company {
     }
 
 
-    List<Airplane> airPlanes = new ArrayList<>();
-    HashMap<Airplane, List<Booking>> map = new HashMap<>();
+    private List<Airplane> airPlanes = new ArrayList<>();
+    private HashMap<Airplane, List<Booking>> map = new HashMap<>();
 
-    void addAirplane(Airplane airpane) {
+    public void addAirplane(Airplane airpane) {
         if (!airPlanes.contains(airpane)) {
             airPlanes.add(airpane);
             map.put(airpane, new ArrayList<Booking>());
         }
     }
 
-    Optional<Booking> getNextBooking(Airplane airplane) {
+    public Optional<Booking> getNextBooking(Airplane airplane) {
         if (!airPlanes.contains(airplane)) {
             return Optional.empty();
         } else if (map.containsKey(airplane) && map.get(airplane).size() >= airplane.getSeats()) {
@@ -55,11 +55,11 @@ public class Company {
 
     }
 
-    List<Airplane> getAirPlanes() {
+    public List<Airplane> getAirPlanes() {
         return airPlanes;
     }
 
-    List<Booking> getBookings(Airplane airplane) {
+    public List<Booking> getBookings(Airplane airplane) {
         return map.get(airplane);
     }
 }
