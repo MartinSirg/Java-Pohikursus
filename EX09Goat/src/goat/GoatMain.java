@@ -24,7 +24,7 @@ public class GoatMain extends Application {
         BorderPane root = loader.load();
         Scene currentScene = new Scene(root);
 
-        MainMenuController controller= loader.getController();
+        MainMenuController controller = loader.getController();
         controller.setMain(this);
 
         primaryStage.setScene(currentScene);
@@ -33,14 +33,14 @@ public class GoatMain extends Application {
 
     }
 
-    public void switchView() throws Exception{
+    public void switchView() throws Exception {
         System.out.println("Kek");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(GoatMain.class.getResource("view/Game.fxml"));
         Pane root = loader.load();
         Scene currentScene = new Scene(root);
 
-        GameController controller= loader.getController();
+        GameController controller = loader.getController();
         controller.setScene(currentScene);
         controller.setRoot(root);
 

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="goat.view.GameController">
+<Pane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="goat.view.GameController">
    <children>
       <ImageView fx:id="goat" fitHeight="100.0" fitWidth="100.0" layoutX="553.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -19,7 +19,7 @@
          </font>
       </Label>
       <Button fx:id="speedUpBtn" layoutX="501.0" layoutY="71.0" mnemonicParsing="false" onAction="#speedUpBtnClicked" text="Speed up" />
-      <Button fx:id="speedDownBtn" layoutX="621.0" layoutY="71.0" mnemonicParsing="false" onAction="#SpeedDownBtnClicked" text="Speed Down" />
+      <Button fx:id="speedDownBtn" layoutX="621.0" layoutY="71.0" mnemonicParsing="false" onAction="#speedDownBtnClicked" text="Speed Down" />
       <Label fx:id="speedLabel" alignment="CENTER" layoutX="501.0" layoutY="96.0" prefHeight="25.0" prefWidth="204.0" text="Speed: 2">
          <font>
             <Font name="Lucida Sans Demibold" size="18.0" />

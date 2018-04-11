@@ -24,7 +24,7 @@ import java.util.Random;
 
 public class GameController {
 
-    private final static int MIN_HEIGHT = -325, MAX_HEIGHT = 325, MIN_WIDTH = -550, MAX_WIDTH = 550;
+    private static final int MIN_HEIGHT = -325, MAX_HEIGHT = 325, MIN_WIDTH = -550, MAX_WIDTH = 550;
 
     private Scene scene;
     private Pane root;
@@ -126,10 +126,10 @@ public class GameController {
         if (move.contains("s") && goat.getTranslateY() + 1 < MAX_HEIGHT) {
             goat.setTranslateY(goat.getTranslateY() + 1);
         }
-        if (move.contains("w") && goat.getTranslateY() - 1> MIN_HEIGHT) {
+        if (move.contains("w") && goat.getTranslateY() - 1 > MIN_HEIGHT) {
             goat.setTranslateY(goat.getTranslateY() - 1);
         }
-        if (move.contains("a") && goat.getTranslateX() - 1> MIN_WIDTH) {
+        if (move.contains("a") && goat.getTranslateX() - 1 > MIN_WIDTH) {
             goat.setTranslateX(goat.getTranslateX() - 1);
         }
         if (move.contains("d") && goat.getTranslateX() + 1 < MAX_WIDTH) {
@@ -146,8 +146,8 @@ public class GameController {
         newMineImgView.setLayoutX(posX);
         newMineImgView.setLayoutY(posY);
 
-        while (scoreLabel.getBoundsInParent().intersects(newMineImgView.getBoundsInParent()) ||
-                goat.getBoundsInParent().intersects(newMineImgView.getBoundsInParent())){
+        while (scoreLabel.getBoundsInParent().intersects(newMineImgView.getBoundsInParent())
+                || goat.getBoundsInParent().intersects(newMineImgView.getBoundsInParent())) {
             int newPosX = random.nextInt(MAX_WIDTH * 2 + 20);
             int newPosY = random.nextInt(MAX_HEIGHT * 2 + 20);
             newMineImgView.setLayoutX(newPosX);
@@ -168,11 +168,9 @@ public class GameController {
         speed.setValue(speed.add(1).intValue());
     }
 
-    public void SpeedDownBtnClicked() {
+    public void speedDownBtnClicked() {
         if (speed.get() != 1) {
             speed.setValue(speed.subtract(1).intValue());
         }
     }
-
-
 }
