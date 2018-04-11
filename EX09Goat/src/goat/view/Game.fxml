@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="goat.view.GameController">
+   <children>
+      <ImageView fx:id="goat" fitHeight="100.0" fitWidth="100.0" layoutX="553.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/kitsLeft.png" />
+         </image></ImageView>
+      <Label fx:id="scoreLabel" alignment="TOP_CENTER" layoutX="501.0" layoutY="14.0" prefHeight="113.0" prefWidth="204.0" text="Skoor: 0" wrapText="true">
+         <font>
+            <Font name="Lucida Sans Demibold" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="speedUpBtn" layoutX="501.0" layoutY="71.0" mnemonicParsing="false" onAction="#speedUpBtnClicked" text="Speed up" />
+      <Button fx:id="speedDownBtn" layoutX="621.0" layoutY="71.0" mnemonicParsing="false" onAction="#SpeedDownBtnClicked" text="Speed Down" />
+      <Label fx:id="speedLabel" alignment="CENTER" layoutX="501.0" layoutY="96.0" prefHeight="25.0" prefWidth="204.0" text="Speed: 2">
+         <font>
+            <Font name="Lucida Sans Demibold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
