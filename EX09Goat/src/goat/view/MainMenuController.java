@@ -14,7 +14,7 @@ public class MainMenuController {
         this.main = main;
     }
 
-    @FXML public void startButtonClicked() throws Exception{
+    @FXML public void startButtonClicked() throws Exception {
         main.switchView();
     }
 }
