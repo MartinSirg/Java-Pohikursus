@@ -54,4 +54,3 @@ public class Rec {
     }
 
 }
-//nums.get(0) + 1 == nums.get(1)
