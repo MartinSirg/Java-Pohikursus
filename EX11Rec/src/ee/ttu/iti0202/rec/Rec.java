@@ -2,14 +2,6 @@ package ee.ttu.iti0202.rec;
 import java.util.List;
 
 public class Rec {
-    public static void main(String[] args) {
-
-
-        System.out.println(maxGrowth(List.of(1, 2, 3)));
-        System.out.println(maxGrowth(List.of(3, 2, 1)));
-        System.out.println(maxGrowth(List.of(1, 2, 3, 1, 2, 3, 4)));
-        System.out.println(maxGrowth(List.of(1, 2, 3, 3, 1, 5, 6)));
-    }
 
     public static int maxElement(List<Integer> nums) {
         if (nums.size() == 1) {
