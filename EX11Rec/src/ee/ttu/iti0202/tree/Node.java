@@ -8,14 +8,16 @@ public class Node {
 
     private Integer value;
 
-    public Node(){}
+    public Node() {
+    }
 
-    public Node(Integer value){
+    public Node(Integer value) {
         this.value = value;
     }
-    public void addValue(Integer value){}
+    public void addValue(Integer value) {
+    }
 
-    public List<Integer> getValues(boolean asc){
+    public List<Integer> getValues(boolean asc) {
         return new ArrayList<Integer>();
     }
 

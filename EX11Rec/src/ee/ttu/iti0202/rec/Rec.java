@@ -27,7 +27,7 @@ public class Rec {
             if (nums.get(0) > max) {
                 return maxElement(nums.subList(1, nums.size()), nums.get(0));
             } else {
-                return maxElement(nums.subList(1,nums.size()), max);
+                return maxElement(nums.subList(1, nums.size()), max);
             }
         }
     }
@@ -40,11 +40,11 @@ public class Rec {
         if (nums.size() < 2) { // if list smaller than 2 is presented---------------------------------------------------
             return nums.size();
         } else if (nums.size() == 2) { // ending condition--------------------------------------------------------------
-            if (nums.get(0) + 1 == nums.get(1)) currentStreak += 1;
+            if (nums.get(1) > nums.get(0)) currentStreak += 1;
             if (currentStreak > longest) longest = currentStreak;
             return longest;
         } else { // recursion conditions--------------------------------------------------------------------------------
-            if (nums.get(0) + 1 == nums.get(1)) {                                                    // streak continues
+            if (nums.get(1) > nums.get(0)) {                                                         // streak continues
                 if (currentStreak + 1 > longest) longest = currentStreak + 1;
                 return maxGrowth(nums.subList(1, nums.size()), currentStreak + 1, longest);
             } else {                                                                          // streak doesn't continue
@@ -54,3 +54,4 @@ public class Rec {
     }
 
 }
+//nums.get(0) + 1 == nums.get(1)
