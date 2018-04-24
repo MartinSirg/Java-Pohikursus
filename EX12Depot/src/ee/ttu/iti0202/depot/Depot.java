@@ -15,7 +15,7 @@ public class Depot {
     private List<Car> cars = new ArrayList<>();
     private List<Train> trains = new ArrayList<>();
 
-    public Optional<Train> makeTrain(Cargo.Type... cargoItems) throws TrainException{
+    public Optional<Train> makeTrain(Cargo.Type... cargoItems) throws TrainException {
         List<Cargo.Type> items = List.of(cargoItems);
 
         // check if there is conflicting cargo -------------------------------------------------------------------------
@@ -64,7 +64,7 @@ public class Depot {
             Cargo cargoObject = Cargo.of(item);
             if (builder.canAddCar(cargoObject)) { //if danger level allows adding car
                 Car carWithCargo = car.get().setCargo(cargoObject);
-                builder.addCar(useCar(carWithCargo));// add car to train, remove from cars
+                builder.addCar(useCar(carWithCargo)); // add car to train, remove from cars
             }
 
         }

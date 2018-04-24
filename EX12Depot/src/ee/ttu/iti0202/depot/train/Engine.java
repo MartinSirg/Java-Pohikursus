@@ -9,11 +9,11 @@ public class Engine {
     private int maxDanger;
     private List<Cargo.Type> forbiddenCargo = new ArrayList<>();
 
-    public Engine(int maxDanger){
+    public Engine(int maxDanger) {
         this.maxDanger = maxDanger;
     }
 
-    public Engine(int maxDanger, Cargo.Type... forbiddenCargo){
+    public Engine(int maxDanger, Cargo.Type... forbiddenCargo) {
         this.maxDanger = maxDanger;
         this.forbiddenCargo = List.of(forbiddenCargo);
     }

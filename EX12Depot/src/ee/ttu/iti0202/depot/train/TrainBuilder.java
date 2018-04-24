@@ -18,7 +18,7 @@ public class TrainBuilder {
         this.maxDanger = engine.getMaxDanger();
     }
 
-    public void addCar(Car car) throws TrainException{
+    public void addCar(Car car) throws TrainException {
         if (car.getCargo().getDangerLevel() + currentDanger > maxDanger) {
             throw new TrainException(TrainException.ExType.DANGER_OVERLOAD);
         } else {

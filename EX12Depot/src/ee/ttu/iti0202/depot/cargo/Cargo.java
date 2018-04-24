@@ -2,7 +2,7 @@ package ee.ttu.iti0202.depot.cargo;
 
 public abstract class Cargo {
     int dangerLevel = 0;
-    public enum Type {HUMANS, WOOD, WATER, FUEL, FIRE}
+    public enum Type { HUMANS, WOOD, WATER, FUEL, FIRE }
 
 
     public static Cargo of(Type type) {

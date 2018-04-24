@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PizzaBuilder {
-    private int diameter = 20;
-    private int slices = 8;
+    private final static int DEFAULT_DIAMTER = 20, DEFAULT_SLICES = 8;
+    private int diameter = DEFAULT_DIAMTER;
+    private int slices = DEFAULT_SLICES;
     private String name;
     private List<Pizza.Components> components = new ArrayList<>();
 
@@ -34,7 +35,7 @@ public class PizzaBuilder {
         return this;
     }
 
-    public Pizza createPizza() throws Exception{
+    public Pizza createPizza() throws Exception {
         if (name == null) throw new Exception();
         return new Pizza(diameter, slices, name, components);
     }

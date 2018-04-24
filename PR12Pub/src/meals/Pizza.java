@@ -3,7 +3,7 @@ package meals;
 import java.util.List;
 
 public class Pizza {
-    public enum Components{BEEF, EXTRA_CHEESE, PEPPERONI, BACON}
+    public enum Components { BEEF, EXTRA_CHEESE, PEPPERONI, BACON }
     private int diameter;
     private int slices;
     private String name;

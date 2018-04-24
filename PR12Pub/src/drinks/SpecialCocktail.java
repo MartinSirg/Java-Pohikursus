@@ -1,9 +1,11 @@
 package drinks;
 
-public class SpecialCocktail extends Drink{
+public class SpecialCocktail extends Drink {
+
+    private final static int COCKTAIL_AMOUNT = 400;
 
     public SpecialCocktail() {
         super();
-        super.amount = 400;
+        super.amount = COCKTAIL_AMOUNT;
     }
 }

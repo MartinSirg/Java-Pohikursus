@@ -13,6 +13,7 @@ import java.util.List;
 public class Pub {
     private static Drink specialCocktail = new SpecialCocktail();
     private static PizzaBuilder pizzaBuilder = new PizzaBuilder();
+    private static final int BEER_AMOUNT = 500, COCKTAIL_AMOUNT = 400;
 
     public static Drink orderDrink(Drink.Drinks drink, int amount) {
         if (drink == Drink.Drinks.BEER) {
@@ -24,10 +25,10 @@ public class Pub {
         }
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         List<Drink> order = new ArrayList<>();
-        order.add(orderDrink(Drink.Drinks.BEER, 500));
-        order.add(orderDrink(Drink.Drinks.SPECIAL_COCKTAIL,400));
+        order.add(orderDrink(Drink.Drinks.BEER, BEER_AMOUNT));
+        order.add(orderDrink(Drink.Drinks.SPECIAL_COCKTAIL, COCKTAIL_AMOUNT));
         pizzaBuilder.setName("BaconPizza");
         pizzaBuilder.addComponents(Pizza.Components.BACON);
         Pizza pizzaOrder = pizzaBuilder.createPizza();
