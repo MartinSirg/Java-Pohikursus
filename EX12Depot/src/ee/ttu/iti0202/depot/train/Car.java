@@ -6,7 +6,9 @@ public class Car {
 
     private Cargo cargo;
 
-    public Car() {}
+    public Car() {
+
+    }
 
     public Car(Cargo cargo) {
         this.cargo = cargo;

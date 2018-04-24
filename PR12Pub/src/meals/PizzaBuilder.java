@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PizzaBuilder {
-    private final static int DEFAULT_DIAMTER = 20, DEFAULT_SLICES = 8;
+    private static final int DEFAULT_DIAMTER = 20, DEFAULT_SLICES = 8;
     private int diameter = DEFAULT_DIAMTER;
     private int slices = DEFAULT_SLICES;
     private String name;
