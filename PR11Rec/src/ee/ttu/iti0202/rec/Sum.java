@@ -11,14 +11,14 @@ public class Sum {
         } else if (n < 0){
             return n + recSum(n + 1);
         } else {
-            return n + recSum(n -1);
+            return n + recSum(n - 1);
         }
     }
 
     public static int recSum(int a, int b) {
         if (a == b) {
             return b;
-        } if (b > a) {
+        } else if (b > a) {
             return a + recSum(a + 1, b);
         } else {
             return a + recSum(a - 1, b);

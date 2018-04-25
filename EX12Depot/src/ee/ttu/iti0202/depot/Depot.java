@@ -123,6 +123,9 @@ public class Depot {
     }
 
     public static void main(String[] args) throws TrainException {
+
+        TrainBuilder builder = new TrainBuilder();
+        builder.addCar(new Car(Cargo.of(Cargo.Type.FIRE)));
 //
 //        //lisatakse depoosse vedureid ja vaguneid
 //        Depot depot = new Depot();

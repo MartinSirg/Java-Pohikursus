@@ -18,7 +18,7 @@ class TrainBuilderTest {
     }
 
     @Test
-    void addCar() {
+    void addCarNormal() {
         builder.setEngine(new Engine(100));
         try {
             builder.addCar(new Car(Cargo.of(Cargo.Type.FIRE)));
@@ -41,6 +41,15 @@ class TrainBuilderTest {
         } catch (TrainException e) {
             assertEquals("Tried adding cargo to train but the engine's danger level was exceeded.", e.getMessage());
         }
+    }
+
+    @Test
+    void addCarTooMuchCargo() throws TrainException {
+        assertThrows(TrainException.class, () -> {
+            builder.setEngine(new Engine(10));
+            builder.addCar(new Car(Cargo.of(Cargo.Type.FIRE)));
+            builder.addCar(new Car(Cargo.of(Cargo.Type.FIRE)));
+        });
     }
 
     @Test
