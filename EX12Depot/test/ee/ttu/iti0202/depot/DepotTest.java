@@ -12,7 +12,7 @@ class DepotTest {
     Depot depot = new Depot();
 
     @Test
-    void makeTrain() {
+    void makeTrainWithTooDangerousCargoSum() {
         //proovitakse teha rongi, kus riskitase ületab veduri lubatud taseme
         depot.addCar(new Car()).addCar(new Car()).addCar(new Car());
         depot.addEngine(new Engine(10));
@@ -24,15 +24,7 @@ class DepotTest {
             assertEquals(1, depot.getTrains().get(0).getCars().size());
             assertEquals(7, depot.getTrains().get(0).getCurrentDanger());
         } catch (TrainException e) {
-            fail("SHouldnt throw: " + e.getMessage());
-        }
-
-        //proovitakse teha rongi nii, et vedurit pole
-        try {
-            depot.makeTrain(Cargo.Type.HUMANS);
-            fail("Shouln't make train because no engines left.");
-        } catch (TrainException e) {
-            assertEquals("No engine found in depot.", e.getMessage());
+            fail("Shouldnt throw: " + e.getMessage());
         }
 
         //proovitakse teha rongi nii, et vaguneid pole
@@ -86,6 +78,13 @@ class DepotTest {
         } catch (TrainException e) {
             fail("Shouldn't throw Exception");
         }
+    }
+
+    @Test
+    void makeTrainWithNoEngine() throws TrainException {
+        //proovitakse teha rongi nii, et vedurit pole
+        assertThrows(TrainException.class,() -> depot.makeTrain(Cargo.Type.HUMANS));
+
     }
 
 

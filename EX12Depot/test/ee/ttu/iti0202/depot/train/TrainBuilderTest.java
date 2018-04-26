@@ -27,20 +27,6 @@ class TrainBuilderTest {
         }
         assertEquals(1, builder.getCars().size());
         assertEquals(7, builder.getCurrentDanger());
-        for (int i = 0; i < 13; i++) {
-            try {
-                builder.addCar(new Car(Cargo.of(Cargo.Type.FIRE)));
-            } catch (TrainException e) {
-                fail("Got TrainException :" + e.getMessage());
-            }
-        }
-        assertEquals(98, builder.getCurrentDanger());
-        try {
-            builder.addCar(new Car(Cargo.of(Cargo.Type.FIRE)));
-            fail("Should throw Exception.");
-        } catch (TrainException e) {
-            assertEquals("Tried adding cargo to train but the engine's danger level was exceeded.", e.getMessage());
-        }
     }
 
     @Test
@@ -53,8 +39,12 @@ class TrainBuilderTest {
     }
 
     @Test
-    void createTrain() {
+    void createTrainNoEngine() {
         assertEquals(Optional.empty(), builder.createTrain());
+    }
+
+    @Test
+    void createTrainNormal() {
         builder.setEngine(new Engine(100));
         try {
             builder.addCar(new Car(Cargo.of(Cargo.Type.HUMANS)));
