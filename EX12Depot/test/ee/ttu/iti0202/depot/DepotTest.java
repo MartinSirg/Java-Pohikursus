@@ -26,46 +26,11 @@ class DepotTest {
         } catch (TrainException e) {
             fail("Shouldnt throw: " + e.getMessage());
         }
+    }
 
-        //proovitakse teha rongi nii, et vaguneid pole
-        depot.getCars().clear();
-        depot.addEngine(new Engine(100));
-        try {
-            depot.makeTrain(Cargo.Type.FIRE, Cargo.Type.FIRE, Cargo.Type.FIRE);
-            assertEquals(2, depot.getTrains().size());
-            assertEquals(0, depot.getTrains().get(1).getCars().size());
-        } catch (TrainException e) {
-            fail("Got: " + e.getMessage());
-        }
-
-        //proovitakse teha rongi, kus osa kaupu ei sobi omavahel.
-        depot.getTrains().clear();
-        depot.getCars().clear();
-        depot.getEngines().clear();
-
-        depot.addEngine(new Engine(100));
-        depot.addCar(new Car()).addCar(new Car());
-        try {
-            depot.makeTrain(Cargo.Type.FUEL, Cargo.Type.HUMANS);
-            fail("Should throw exception.");
-        } catch (TrainException e) {
-            assertEquals("Incompatible cargo input. No train was created.", e.getMessage());
-        }
-
-        depot.getEngines().clear();
-        depot.addEngine(new Engine(100, Cargo.Type.WOOD));
-        try {
-            System.out.println(depot.getEngine().getForbiddenCargo());
-            depot.makeTrain(Cargo.Type.WOOD, Cargo.Type.HUMANS);
-            fail("Should throw exception.");
-        } catch (TrainException e) {
-            assertEquals("Incompatible cargo input. No train was created.", e.getMessage());
-        }
-
+    @Test
+    void makeTrainNormalCase() {
         //normal case
-        depot.getTrains().clear();
-        depot.getCars().clear();
-        depot.getEngines().clear();
 
         depot.addEngine(new Engine(100));
         for(int i = 0; i < 20; i++) {
@@ -81,21 +46,44 @@ class DepotTest {
     }
 
     @Test
-    void makeTrainWithNoEngine() throws TrainException {
+    void makeTrainIncompatibleEngineAndCargo() {
+        depot.getEngines().clear();
+        depot.addEngine(new Engine(100, Cargo.Type.WOOD));
+        assertThrows(TrainException.class, () -> depot.makeTrain(Cargo.Type.WOOD, Cargo.Type.HUMANS));
+    }
+
+    @Test
+    void makeTrainWithNoEngine() {
         //proovitakse teha rongi nii, et vedurit pole
         assertThrows(TrainException.class,() -> depot.makeTrain(Cargo.Type.HUMANS));
 
     }
 
+    @Test
+    void makeTrainNoCars() {
+        //proovitakse teha rongi nii, et vaguneid pole
+        depot.addEngine(new Engine(100));
+        try {
+            depot.makeTrain(Cargo.Type.FIRE, Cargo.Type.FIRE, Cargo.Type.FIRE);
+            assertEquals(1, depot.getTrains().size());
+            assertEquals(0, depot.getTrains().get(0).getCars().size());
+        } catch (TrainException e) {
+            fail("Got: " + e.getMessage());
+        }
+    }
 
     @Test
-    void getEngine() {
-        try {
-            depot.getEngine();
-            fail("Should throw Exception");
-        } catch (TrainException e) {
-            assertEquals("No engine found in depot.", e.getMessage());
-        }
+    void makeTrainIncompatibleCargo() {
+        //proovitakse teha rongi, kus osa kaup ei sobi omavahel.
+
+        depot.addEngine(new Engine(100));
+        depot.addCar(new Car()).addCar(new Car());
+        assertThrows(TrainException.class,() -> depot.makeTrain(Cargo.Type.FUEL, Cargo.Type.HUMANS));
+    }
+
+
+    @Test
+    void getEngineNormal() {
         depot.addEngine(new Engine(10)).addEngine(new Engine(100)).addEngine(new Engine(99));
         try {
             assertEquals(100, depot.getEngine().getMaxDanger());
@@ -103,16 +91,24 @@ class DepotTest {
             fail("Shouldn't throw exception");
         }
     }
+    @Test
+    void getEngineNoEngine() {
+        depot.getEngines().clear();
+        assertThrows(TrainException.class, () -> depot.getEngine());
+    }
 
     @Test
     void getCar() {
-        if (depot.getCar().isPresent()) {
-            fail("Shouldn't find a car, since list is empty.");
-        }
         depot.addCar(new Car());
         if (!depot.getCar().isPresent()) {
             fail("Didn't find car");
         }
+    }
+
+    @Test
+    void getCarNoCars() {
+        depot.getCars().clear();
+        if (depot.getCar().isPresent()) fail("Shouldn't find car");
     }
 
     @Test
