@@ -124,6 +124,7 @@ public class Matrix {
         }
         return result;
     }
+
     private static int[][] subMatrix(int[][] matrix, int noPickRow, int noPickCol) {
         int[][] newMatrix = new int[matrix.length-1][matrix.length-1];
         int nextX = 0, nextY = 0;
