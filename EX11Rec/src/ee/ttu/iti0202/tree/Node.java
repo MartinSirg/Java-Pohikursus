@@ -7,6 +7,22 @@ import java.util.Optional;
 public class Node {
 
     public static void main(String[] args) {
+        Node n1 = new Node();
+        n1.addValue(1);
+        System.out.println(n1.getMaxDepth()); // 0
+        n1.addValue(2);
+        System.out.println(n1.getMaxDepth()); // 1
+        n1.addValue(3);
+        System.out.println(n1.getMaxDepth()); // 2
+        n1.addValue(4);
+        n1.addValue(5);
+        n1.addValue(6);
+        System.out.println(n1.getMaxDepth()); // 5
+        n1.addValue(8);
+        n1.addValue(7);
+        System.out.println(n1.getMaxDepth()); // 7
+        n1.addValue(9);
+        System.out.println(n1.getMaxDepth()); // 7
     }
     private Integer value;
     private Node left;
@@ -48,7 +64,7 @@ public class Node {
     }
 
     public Optional<Node> getNode(Integer value) {
-        if (this.value == value) return Optional.of(this);
+        if (this.value.equals(value)) return Optional.of(this);
         if (value < this.value && left != null) return left.getNode(value);
         if (value > this.value && right != null) return right.getNode(value);
         return Optional.empty();
