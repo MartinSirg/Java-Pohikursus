@@ -58,7 +58,7 @@ public class Node {
         int leftResult = 0;
         int rightResult = 0;
         if (left == null && right == null) return 0;
-        if (left != null) leftResult = left.getMaxDepth() + 1 ;
+        if (left != null) leftResult = left.getMaxDepth() + 1;
         if (right != null) rightResult = right.getMaxDepth() + 1;
         return Math.max(rightResult, leftResult);
 
