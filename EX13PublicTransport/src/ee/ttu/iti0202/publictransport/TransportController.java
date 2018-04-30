@@ -1,11 +1,6 @@
 package ee.ttu.iti0202.publictransport;
 
-import java.util.LinkedHashSet;
-import java.util.Optional;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TransportController {
 
@@ -14,7 +9,7 @@ public class TransportController {
     }
 
     public Set<NearbyStop> getNearbyStops(Location location) {
-        List<NearbyStop> stopsList = new ArrayList<>(List.of(
+        List<NearbyStop> stopsList = new ArrayList<>(Arrays.asList(
                 TransportService.nearbyStops(location.getLatitude(), location.getLongitude())
         ));
         Collections.sort(stopsList);
@@ -22,7 +17,7 @@ public class TransportController {
     }
 
     public Optional<NearbyStop> getNearestStop(Location location) {
-        List<NearbyStop> stops = new ArrayList<>(List.of(
+        List<NearbyStop> stops = new ArrayList<>(Arrays.asList(
                 TransportService.nearbyStops(location.getLatitude(), location.getLongitude())
         ));
 
