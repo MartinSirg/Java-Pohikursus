@@ -3,7 +3,7 @@ public class April {
     public static String answer(int question) {
         switch (question) {
             case 0: return "10";
-            case 2: return "checkout";
+            case 2: return "git checkout";
             default: return "";
         }
     }
