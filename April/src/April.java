@@ -3,9 +3,11 @@ public class April {
     public static String answer(int question) {
         switch (question) {
             case 0: return "10";
+            case 2: return "revert";
+            default: return "";
         }
-        return "";
     }
+
     public static int x(int a) {
         int result = 0;
         if (a < 0) {
