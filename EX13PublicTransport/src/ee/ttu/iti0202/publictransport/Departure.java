@@ -1,7 +1,9 @@
 package ee.ttu.iti0202.publictransport;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Departure implements Comparable<Departure> {
     private String name;
@@ -11,9 +13,12 @@ public class Departure implements Comparable<Departure> {
 
     public int getMinutesFromNow() {
         //if (LocalDateTime.now().isAfter(getTime())) return 0;
-        Duration duration = Duration.between(LocalDateTime.now(), getTime());
+        //Duration duration = Duration.between(LocalDateTime.now(), getTime());
         //TODO : duration.toDaysPart() * 1440 -> int + return
-        return duration.toHoursPart() * MINUTES_IN_HOUR + duration.toMinutesPart();
+        // duration.toHoursPart() * MINUTES_IN_HOUR + duration.toMinutesPart();
+        Instant current = Instant.now();
+        Instant departs = Instant.parse(time);
+        return Math.toIntExact(ChronoUnit.MINUTES.between(departs, current));
     }
 
     public String getName() {

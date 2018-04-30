@@ -41,10 +41,10 @@ public class TransportController {
         return Optional.of(departures.get(0));
     }
 
-    public static void main(String[] args) throws Exception {
-//        TransportController controller = new TransportController();
-//        controller.getNearbyStops(new Location(59.3977111, 24.660198));
+    public static void main(String[] args) {
+        TransportController controller = new TransportController();
+//        System.out.println(controller.getNearbyStops(new Location(59.3977111, 24.660198)));
 //        System.out.println(controller.getNearestStop(new Location(59.3977111,24.660198)));
-//        System.out.println(controller.getDeparturesFromStop("sad"));
+        System.out.println(controller.getDeparturesFromStop("tal_03504-1"));
     }
 }

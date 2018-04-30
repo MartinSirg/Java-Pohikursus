@@ -25,7 +25,6 @@ public class TransportService {
         } catch (Exception e) {
             return new NearbyStop[0];
         }
-
     }
 
     public static DeparturesFromStop departuresFromStop(String stopId) {
