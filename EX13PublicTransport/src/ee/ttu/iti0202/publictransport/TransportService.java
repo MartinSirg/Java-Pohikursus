@@ -42,8 +42,7 @@ public class TransportService {
             in.close();
             return gson.fromJson(content.toString(), DeparturesFromStop.class);
         } catch (Exception e) {
-//            return new DeparturesFromStop();
-            return null;
+            return new DeparturesFromStop();
         }
 
     }

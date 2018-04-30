@@ -39,8 +39,7 @@ public class TransportController {
     public Optional<Departure> getNextDepartureFromStop(String stopId) {
         DeparturesFromStop departuresFromStop = TransportService.departuresFromStop(stopId);
 
-//        if (departuresFromStop.getStop().getName().equals("")) {
-        if (departuresFromStop == null) {
+        if (departuresFromStop.getStop().getName().equals("")) {
             return Optional.empty();
         }
 
