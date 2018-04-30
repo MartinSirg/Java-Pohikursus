@@ -6,4 +6,11 @@ public class April {
         }
         return "";
     }
+    public static int x(int a) {
+        int result = 0;
+        for (int i = 0; i == a + 1; i++) {
+            result += i;
+        }
+        return result;
+    }
 }
