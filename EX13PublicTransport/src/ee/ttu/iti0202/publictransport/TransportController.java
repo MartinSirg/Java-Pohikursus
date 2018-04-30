@@ -9,11 +9,11 @@ import java.util.Set;
 
 public class TransportController {
 
-    public DeparturesFromStop getDeparturesFromStop(String stopId) throws Exception {
+    public DeparturesFromStop getDeparturesFromStop(String stopId) {
         return TransportService.departuresFromStop(stopId);
     }
 
-    public Set<NearbyStop> getNearbyStops(Location location) throws Exception {
+    public Set<NearbyStop> getNearbyStops(Location location) {
         List<NearbyStop> stopsList = new ArrayList<>(List.of(
                 TransportService.nearbyStops(location.getLatitude(), location.getLongitude())
         ));
@@ -21,7 +21,7 @@ public class TransportController {
         return new LinkedHashSet<>(stopsList);
     }
 
-    public Optional<NearbyStop> getNearestStop(Location location) throws Exception {
+    public Optional<NearbyStop> getNearestStop(Location location) {
         List<NearbyStop> stops = new ArrayList<>(List.of(
                 TransportService.nearbyStops(location.getLatitude(), location.getLongitude())
         ));
@@ -34,7 +34,7 @@ public class TransportController {
         return Optional.of(stops.get(0));
     }
 
-    public Optional<Departure> getNextDepartureFromStop(String stopId) throws Exception {
+    public Optional<Departure> getNextDepartureFromStop(String stopId) {
         DeparturesFromStop departuresFromStop = TransportService.departuresFromStop(stopId);
 
         if (departuresFromStop.getStop().getName().equals("")) {
@@ -48,7 +48,8 @@ public class TransportController {
 
     public static void main(String[] args) throws Exception {
 //        TransportController controller = new TransportController();
-//        //controller.getNearbyStops(new Location(59.3977111, 24.660198));
+//        controller.getNearbyStops(new Location(59.3977111, 24.660198));
 //        System.out.println(controller.getNearestStop(new Location(59.3977111,24.660198)));
+//        System.out.println(controller.getDeparturesFromStop("sad"));
     }
 }
