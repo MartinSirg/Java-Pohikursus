@@ -22,6 +22,7 @@ public class NearbyStop extends Stop implements Comparable<NearbyStop> {
 
     @Override
     public String toString() {
-        return String.format("%s(%s)->%s - %dm -> Bussid:", getName(), getId(), getDirection(), getDistance()) + getTransportations();
+        return String.format("%s(%s)->%s - %dm -> Bussid:",
+                getName(), getId(), getDirection(), getDistance()) + getTransportations();
     }
 }

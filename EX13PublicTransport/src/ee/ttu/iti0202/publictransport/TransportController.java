@@ -23,7 +23,7 @@ public class TransportController {
 
     public Optional<NearbyStop> getNearestStop(Location location) throws Exception {
         List<NearbyStop> stops = new ArrayList<>(List.of(
-                TransportService.nearbyStops(location.getLatitude(),location.getLongitude())
+                TransportService.nearbyStops(location.getLatitude(), location.getLongitude())
         ));
 
         if (stops.size() == 0) {
