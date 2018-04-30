@@ -29,7 +29,8 @@ public class TransportService {
 
     public static DeparturesFromStop departuresFromStop(String stopId) {
         try {
-            String urlString = String.format("https://public-transport-api.herokuapp.com/departures/%s/%s", REGION, stopId);
+            String urlString = String.format("https://public-transport-api.herokuapp.com/departures/%s/%s",
+                    REGION, stopId);
             URL url = new URL(urlString);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
