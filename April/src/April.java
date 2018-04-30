@@ -8,9 +8,21 @@ public class April {
     }
     public static int x(int a) {
         int result = 0;
-        for (int i = 0; i == a + 1; i++) {
-            result += i;
+        if (a < 0) {
+            System.out.println("-");
+            for (int i = 0; i > a - 1; i--) {
+                System.out.println(result);
+                result += i;
+            }
+        } else {
+            System.out.println("+");
+            for (int i = 0; i < a + 1; i++) {
+                result += i;
+            }
         }
         return result;
+    }
+
+    public static void main(String[] args) {
     }
 }
