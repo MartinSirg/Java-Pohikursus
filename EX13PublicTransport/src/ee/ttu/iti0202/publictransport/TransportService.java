@@ -1,17 +1,10 @@
 package ee.ttu.iti0202.publictransport;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.internal.LinkedTreeMap;
-
-import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.util.List;
 
 public class TransportService {
     static final String REGION = "tallinn";
@@ -48,10 +41,6 @@ public class TransportService {
     }
 
     public static void main(String[] args) throws Exception {
-        List<Departure> departures = new ArrayList<>(departuresFromStop("tal_03504-1").getDepartures());
-        for (Departure departure: departures) {
-            System.out.println(departure);
-        }
-
+//        System.out.println(List.of(nearbyStops(1,1)));
     }
 }

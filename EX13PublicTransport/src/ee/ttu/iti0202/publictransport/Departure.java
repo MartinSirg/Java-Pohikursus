@@ -2,9 +2,8 @@ package ee.ttu.iti0202.publictransport;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Set;
 
-public class Departure {
+public class Departure implements Comparable<Departure> {
     private String name;
     private String time;
     private String destination;
@@ -33,7 +32,8 @@ public class Departure {
         return String.format("\n{Bussinumber: %s\nVäljub %s (%d min pärast)\n Sihtpunkt: %s}", name, time, getMinutesFromNow(), destination);
     }
 
-    public static void main(String[] args) {
-
+    @Override
+    public int compareTo(Departure o) {
+        return Integer.compare(getMinutesFromNow(),o.getMinutesFromNow());
     }
 }
