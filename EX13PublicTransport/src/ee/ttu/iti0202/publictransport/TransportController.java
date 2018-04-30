@@ -39,7 +39,8 @@ public class TransportController {
     public Optional<Departure> getNextDepartureFromStop(String stopId) {
         DeparturesFromStop departuresFromStop = TransportService.departuresFromStop(stopId);
 
-        if (departuresFromStop.getStop().getName().equals("")) {
+//        if (departuresFromStop.getStop().getName().equals("")) {
+        if (departuresFromStop == null) {
             return Optional.empty();
         }
 
@@ -49,9 +50,10 @@ public class TransportController {
     }
 
     public static void main(String[] args) {
-        TransportController controller = new TransportController();
+//        TransportController controller = new TransportController();
 //        System.out.println(controller.getNearbyStops(new Location(59.3977111, 24.660198)));
 //        System.out.println(controller.getNearestStop(new Location(59.3977111,24.660198)));
-        System.out.println(controller.getDeparturesFromStop("tal_03504-1"));
+//        System.out.println(controller.getDeparturesFromStop("tal_03504-1"));
+//        System.out.println(controller.getNextDepartureFromStop("tal_03504-1"));
     }
 }
