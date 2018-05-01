@@ -27,6 +27,22 @@ public class April {
         return result;
     }
 
+    public static String easy(int nr) {
+        switch (nr) {
+            case 6: return "which";
+            case 12: return "a";
+            case 43: return "with";
+            case 46: return "sea's";
+            case 54: return "if";
+            case 60: return "in";
+            case 65: return "story";
+            case 82: return "fair";
+            case 114: return "not";
+            case 116: return "sell";
+            default: return "";
+        }
+    }
+
     public static void main(String[] args) {
     }
 }
