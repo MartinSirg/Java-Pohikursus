@@ -152,6 +152,9 @@ public class Matrix {
     }
 
     private static int determinant2x2(int[][] matrix) {
+        String out = "", word = "";
+        out.;
+
         for (int[] row: matrix) {
             if (row.length != matrix.length) {
                 System.out.println("Ei ole ruutmaatriks");
