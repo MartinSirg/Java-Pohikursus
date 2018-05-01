@@ -1,5 +1,5 @@
 public class April {
-    private static final int SIX = 6, CONSTX = 7, CONSTY = 32, PUSH_COUNT = 12;
+    private static final int SIX = 6, CONSTX = 7, CONSTY = 32, PUSH_COUNT = 13;
 
     public static String answer(int question) {
         switch (question) {
@@ -53,6 +53,5 @@ public class April {
     }
 
     public static void main(String[] args) {
-        System.out.println(easy(77));
     }
 }
