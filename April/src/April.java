@@ -28,20 +28,20 @@ public class April {
     }
 
     public static String easy(int nr) {
-        String text = "Look in thy glass and tell the face thou viewest\n" +
-                "Now is the time that face should form another;\n" +
-                "Whose fresh repair if now thou not renewest,\n" +
-                "Thou dost beguile the world, unbless some mother.\n" +
-                "For where is she so fair whose unear'd womb\n" +
-                "Disdains the tillage of thy husbandry?\n" +
-                "Or who is he so fond will be the tomb,\n" +
-                "Of his self-love to stop posterity? \n" +
-                "Thou art thy mother's glass and she in thee\n" +
-                "Calls back the lovely April of her prime;\n" +
-                "So thou through windows of thine age shalt see,\n" +
-                "Despite of wrinkles this thy golden time.\n" +
-                "  But if thou live, remember'd not to be,\n" +
-                "  Die single and thine image dies with thee.\n";
+        String text = "Look in thy glass and tell the face thou viewest "
+                + "Now is the time that face should form another; "
+                + "Whose fresh repair if now thou not renewest, "
+                + "Thou dost beguile the world, unbless some mother. "
+                + "For where is she so fair whose unear'd womb "
+                + "Disdains the tillage of thy husbandry? "
+                + "Or who is he so fond will be the tomb, "
+                + "Of his self-love to stop posterity?  "
+                + "Thou art thy mother's glass and she in thee "
+                + "Calls back the lovely April of her prime; "
+                + "So thou through windows of thine age shalt see, "
+                + "Despite of wrinkles this thy golden time. "
+                + "  But if thou live, remember'd not to be, "
+                + "  Die single and thine image dies with thee. ";
         String[] textArray = text.split(" ");
         return textArray[nr];
     }
