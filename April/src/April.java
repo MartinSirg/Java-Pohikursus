@@ -35,33 +35,7 @@ public class April {
                 + "For where is she so fair whose unear'd womb "
                 + "Disdains the tillage of thy husbandry? "
                 + "Or who is he so fond will be the tomb, "
-                + "Of his self-love to stop posterity?  "
-                + "Thou art thy mother's glass and she in thee "
-                + "Calls back the lovely April of her prime; "
-                + "So thou through windows of thine age shalt see, "
-                + "Despite of wrinkles this thy golden time. "
-                + "But if thou live, remember'd not to be, "
-                + "Die single and thine image dies with thee. "
-                + "Now is the time that face should form another; "
-                + "Whose fresh repair if now thou not renewest, "
-                + "Thou dost beguile the world, unbless some mother. "
-                + "For where is she so fair whose unear'd womb "
-                + "Disdains the tillage of thy husbandry? "
-                + "Or who is he so fond will be the tomb, "
-                + "Of his self-love to stop posterity?  "
-                + "Thou art thy mother's glass and she in thee "
-                + "Calls back the lovely April of her prime; "
-                + "So thou through windows of thine age shalt see, "
-                + "Despite of wrinkles this thy golden time. "
-                + "But if thou live, remember'd not to be, "
-                + "Die single and thine image dies with thee. "
-                + "Now is the time that face should form another; "
-                + "Whose fresh repair if now thou not renewest, "
-                + "Thou dost beguile the world, unbless some mother. "
-                + "For where is she so fair whose unear'd womb "
-                + "Disdains the tillage of thy husbandry? "
-                + "Or who is he so fond will be the tomb, "
-                + "Of his self-love to stop posterity?  "
+                + "Of his self-love to stop posterity? "
                 + "Thou art thy mother's glass and she in thee "
                 + "Calls back the lovely April of her prime; "
                 + "So thou through windows of thine age shalt see, "
@@ -69,13 +43,15 @@ public class April {
                 + "But if thou live, remember'd not to be, "
                 + "Die single and thine image dies with thee. ";
         String[] textArray = text.split(" ");
+        System.out.println(textArray.length);
         return textArray[nr];
     }
 
     public static int guess(int n) {
-        return n * 7 - 32 + 10;
+        return n * 7 - 32 + 11;
     }
 
     public static void main(String[] args) {
+        System.out.println(easy(77));
     }
 }
