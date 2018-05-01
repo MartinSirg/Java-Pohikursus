@@ -47,7 +47,7 @@ public class April {
     }
 
     public static int guess(int n) {
-        return 0;
+        return 32;
     }
 
     public static void main(String[] args) {
