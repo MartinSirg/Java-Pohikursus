@@ -29,9 +29,11 @@ public class April {
 
     public static String easy(int nr) {
         switch (nr) {
+            case 4: return "and,";
             case 6: return "which";
+            case 7: return "face,";
             case 12: return "a";
-            case 43: return "with";
+            case 44: return "Disdains";
             case 46: return "sea's";
             case 54: return "if";
             case 60: return "in";
@@ -41,6 +43,10 @@ public class April {
             case 116: return "sell";
             default: return "";
         }
+    }
+
+    public static int guess(int n) {
+        return 0;
     }
 
     public static void main(String[] args) {
