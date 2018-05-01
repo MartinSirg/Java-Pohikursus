@@ -7,6 +7,7 @@ public class April {
             case 3: return "20";
             case 4: return "15";
             case 5: return Integer.toString(Integer.MAX_VALUE);
+            case 6: return "01.01.1970";
             default: return "";
         }
     }
