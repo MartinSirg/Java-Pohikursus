@@ -40,8 +40,8 @@ public class April {
                 + "Calls back the lovely April of her prime; "
                 + "So thou through windows of thine age shalt see, "
                 + "Despite of wrinkles this thy golden time. "
-                + "  But if thou live, remember'd not to be, "
-                + "  Die single and thine image dies with thee. ";
+                + "But if thou live, remember'd not to be, "
+                + "Die single and thine image dies with thee. ";
         String[] textArray = text.split(" ");
         return textArray[nr];
     }
