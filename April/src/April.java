@@ -47,7 +47,7 @@ public class April {
     }
 
     public static int guess(int n) {
-        return Integer.MAX_VALUE;
+        return 0;
     }
 
     public static void main(String[] args) {
