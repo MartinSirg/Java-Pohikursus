@@ -1,4 +1,5 @@
 public class April {
+    private static final int SIX = 6, CONSTX = 7, CONSTY = 32, PUSH_COUNT = 12;
 
     public static String answer(int question) {
         switch (question) {
@@ -7,7 +8,7 @@ public class April {
             case 3: return "20";
             case 4: return "15";
             case 5: return Integer.toString(Integer.MAX_VALUE);
-            case 6: return "01.01.1970";
+            case SIX: return "01.01.1970";
             default: return "";
         }
     }
@@ -48,7 +49,7 @@ public class April {
     }
 
     public static int guess(int n) {
-        return n * 7 - 32 + 11;
+        return n * CONSTX - CONSTY + PUSH_COUNT;
     }
 
     public static void main(String[] args) {
