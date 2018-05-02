@@ -2,6 +2,7 @@ package ee.ttu.iti0202.publictransport;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
 public class Departure implements Comparable<Departure> {
@@ -12,9 +13,7 @@ public class Departure implements Comparable<Departure> {
 
     public int getMinutesFromNow() {
         //if (LocalDateTime.now().isAfter(getTime())) return 0;
-        Instant current = Instant.now();
-        Instant departs = Instant.parse(time);
-        return Math.toIntExact(ChronoUnit.MINUTES.between(departs, current));
+        return Math.toIntExact(ChronoUnit.MINUTES.between(LocalDateTime.now(), getTime()));
     }
 
     public String getName() {
@@ -22,7 +21,9 @@ public class Departure implements Comparable<Departure> {
     }
 
     public LocalDateTime getTime() {
-        return LocalDateTime.parse(time.replace("Z", ""));
+        Instant departs = Instant.parse(time);
+        ZoneId zoneId = ZoneId.systemDefault();
+        return LocalDateTime.ofInstant(departs, zoneId);
     }
 
     public String getDestination() {
@@ -32,7 +33,7 @@ public class Departure implements Comparable<Departure> {
     @Override
     public String toString() {
         return String.format("\n{Bussinumber: %s\nVäljub %s (%d min pärast)\n Sihtpunkt: %s}",
-                name, time, getMinutesFromNow(), destination);
+                name, getTime(), getMinutesFromNow(), destination);
     }
 
     @Override
