@@ -22,7 +22,7 @@ public class NearbyStop extends Stop implements Comparable<NearbyStop> {
 
     @Override
     public String toString() {
-        return String.format("%s(%s)->%s - %dm -> Bussid:",
+        return String.format("%13s   (%11s)->%23s - %dm -> Bussid: ",
                 getName(), getId(), getDirection(), getDistance()) + getTransportations();
     }
 }
