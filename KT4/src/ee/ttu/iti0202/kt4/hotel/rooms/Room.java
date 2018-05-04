@@ -13,9 +13,9 @@ public abstract class Room {
     private List<Booking> bookings;
 
 
-    enum RoomTypes { BIG, SMALL, MEDIUM }
+    public enum RoomTypes { BIG, SMALL, MEDIUM }
 
-    enum Special { PARTY, MEGA_PARTY, NO_SPECIAL }
+    public enum Special { PARTY, MEGA_PARTY, NO_SPECIAL }
 
     Room(int id, int price, Special special) {
         this.id = id;
@@ -54,5 +54,9 @@ public abstract class Room {
 
     public Special getSpecial() {
         return special;
+    }
+
+    public RoomTypes getType() {
+        return type;
     }
 }
