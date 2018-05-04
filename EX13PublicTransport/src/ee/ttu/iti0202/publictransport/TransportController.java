@@ -57,7 +57,7 @@ public class TransportController {
             System.out.println(stop);
         }
         System.out.println();
-        System.out.println("---------------------------------------------Lähim Peatus" +
+        System.out.println("----------------------------------------------Lähim Peatus" +
                 "----------------------------------------------");
         System.out.println(controller.getNearestStop(new Location(59.3977111,24.660198)).get());
 //        System.out.println(controller.getDeparturesFromStop("tal_03504-1"));
