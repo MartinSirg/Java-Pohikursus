@@ -26,6 +26,7 @@ public class Mailbox {
     }
 
     public void receiveLetter(Letter letter) {
+        if (spam.contains(letter) || normalLetters.contains(letter)) return;
         if (letter.getDestinationMailboxID() == id) {
             normalLetters.add(letter);
         } else {
