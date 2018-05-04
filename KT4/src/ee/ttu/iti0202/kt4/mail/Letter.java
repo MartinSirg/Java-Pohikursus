@@ -1,4 +1,4 @@
-package ee.ttu.iti0202.kt1.mail;
+package ee.ttu.iti0202.kt4.mail;
 
 public class Letter {
 
