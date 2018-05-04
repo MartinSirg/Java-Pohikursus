@@ -49,17 +49,17 @@ public class TransportController {
     }
 
     public static void main(String[] args) {
-        TransportController controller = new TransportController();
-        System.out.println("-------------Kõik peatused kauguselt kasvavas järjekorras" +
-                " Lat: 59.3977111, Lng: 24.660198--------------");
-        System.out.println();
-        for(NearbyStop stop: controller.getNearbyStops(new Location(59.3977111, 24.660198))) {
-            System.out.println(stop);
-        }
-        System.out.println();
-        System.out.println("----------------------------------------------Lähim Peatus" +
-                "----------------------------------------------");
-        System.out.println(controller.getNearestStop(new Location(59.3977111,24.660198)).get());
+//        TransportController controller = new TransportController();
+//        System.out.println("-------------Kõik peatused kauguselt kasvavas järjekorras" +
+//                " Lat: 59.3977111, Lng: 24.660198--------------");
+//        System.out.println();
+//        for(NearbyStop stop: controller.getNearbyStops(new Location(59.3977111, 24.660198))) {
+//            System.out.println(stop);
+//        }
+//        System.out.println();
+//        System.out.println("----------------------------------------------Lähim Peatus" +
+//                "----------------------------------------------");
+//        System.out.println(controller.getNearestStop(new Location(59.3977111,24.660198)).get());
 //        System.out.println(controller.getDeparturesFromStop("tal_03504-1"));
 //        System.out.println(controller.getNextDepartureFromStop("tal_03504-1"));
     }
