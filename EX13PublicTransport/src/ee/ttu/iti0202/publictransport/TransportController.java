@@ -60,6 +60,7 @@ public class TransportController {
 //        System.out.println("----------------------------------------------Lähim Peatus" +
 //                "----------------------------------------------");
 //        System.out.println(controller.getNearestStop(new Location(59.3977111,24.660198)).get());
+//
 //        System.out.println(controller.getDeparturesFromStop("tal_03504-1"));
 //        System.out.println(controller.getNextDepartureFromStop("tal_03504-1"));
     }
