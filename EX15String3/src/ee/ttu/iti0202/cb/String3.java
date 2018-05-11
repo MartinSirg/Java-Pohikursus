@@ -48,8 +48,8 @@ public class String3 {
 
     public int countTriple(String str) {
         int count = 0;
-        for(int i = 0; i < str.length() - 2; i++) {
-            if(str.charAt(i) == str.charAt(i + 1)
+        for (int i = 0; i < str.length() - 2; i++) {
+            if (str.charAt(i) == str.charAt(i + 1)
                     && str.charAt(i) == str.charAt(i + 2)) {
                 count++;
             }
@@ -95,7 +95,7 @@ public class String3 {
         for (char c: str.toCharArray()) {
             for (int i = 1; i < str.length(); i++) {
                 StringBuilder sb = new StringBuilder();
-                for(int j = 0; j < i; j++) {
+                for (int j = 0; j < i; j++) {
                     sb.append(c);
                 }
                 if (str.contains(sb.toString()) && sb.toString().length() > currentMax) {
