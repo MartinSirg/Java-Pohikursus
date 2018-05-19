@@ -28,7 +28,7 @@ public class Main {
         Child lisa = new Child(FOUR_TEEN, new CandyHaterStrategy());
 
         ChoosingCandyStrategy alwaysFirstStrategy;
-        alwaysFirstStrategy = (candies, age) -> candies.size() == 0 ? Optional.empty(): Optional.of(candies.get(0));
+        alwaysFirstStrategy = (candies, age) -> candies.size() == 0 ? Optional.empty() : Optional.of(candies.get(0));
 
         Child anna = new Child(4, alwaysFirstStrategy);
         Child george = new Child(THIRTY_SIX, (candies, age) -> {
