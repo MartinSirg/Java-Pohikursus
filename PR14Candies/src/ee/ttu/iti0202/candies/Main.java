@@ -7,37 +7,38 @@ import ee.ttu.iti0202.candies.strategies.ChooseOnlySugarFreeCandiesStrategy;
 import ee.ttu.iti0202.candies.strategies.ChoosingCandyStrategy;
 import ee.ttu.iti0202.candies.strategies.MakeChoiceDependingOnAgeStrategy;
 
-import javax.crypto.spec.OAEPParameterSpec;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
 public class Main {
+    private static final int SIX = 6, FOUR_TEEN = 14, THIRTY_SIX = 36, SEVEN = 7, SIXTEEN = 16;
 
     public static void main(String[] args) {
         Random random = new Random();
         // Martin likes all candies.
-        Child martin = new Child(6, (candies, age) -> {
+        Child martin = new Child(SIX, (candies, age) -> {
             if (candies.isEmpty()) {
                 return Optional.empty();
             }
 
             return Optional.of(candies.get(random.nextInt(candies.size())));
         });
-        Child lisa = new Child(14, new CandyHaterStrategy());
+        Child lisa = new Child(FOUR_TEEN, new CandyHaterStrategy());
 
-        ChoosingCandyStrategy alwaysFirstStrategy = (candies, age) -> candies.size() == 0 ? Optional.empty() : Optional.of(candies.get(0));
+        ChoosingCandyStrategy alwaysFirstStrategy;
+        alwaysFirstStrategy = (candies, age) -> candies.size() == 0 ? Optional.empty(): Optional.of(candies.get(0));
 
         Child anna = new Child(4, alwaysFirstStrategy);
-        Child george = new Child(36, (candies, age) -> {
+        Child george = new Child(THIRTY_SIX, (candies, age) -> {
             for (Candy candy: candies) {
                 if (candy.getCandyType().equals(Candy.CandyType.CHOCOLATE_CANDY)) return Optional.of(candy);
             }
             return Optional.empty();
-        }); // TODO: Only chocolate candies
-        Child gert = new Child(7, new ChooseOnlySugarFreeCandiesStrategy());
-        Child anu = new Child(16, new MakeChoiceDependingOnAgeStrategy());
+        });
+        Child gert = new Child(SEVEN, new ChooseOnlySugarFreeCandiesStrategy());
+        Child anu = new Child(SIXTEEN, new MakeChoiceDependingOnAgeStrategy());
         Child artur = new Child(4, new MakeChoiceDependingOnAgeStrategy());
 
         List<Candy> candies = new ArrayList<>();

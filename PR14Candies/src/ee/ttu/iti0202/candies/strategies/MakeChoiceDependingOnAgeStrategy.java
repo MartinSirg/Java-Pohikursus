@@ -10,7 +10,8 @@ public class MakeChoiceDependingOnAgeStrategy implements ChoosingCandyStrategy {
     @Override
     public Optional<Candy> chooseCandy(List<Candy> candies, int age) {
         for (Candy candy: candies) {
-            if (!(candy.getCandyType().equals(Candy.CandyType.GUM) && age < 5 || candy.getCandyType().equals(Candy.CandyType.CHOCOLATE_CANDY) && age < 10)) {
+            if (!(candy.getCandyType().equals(Candy.CandyType.GUM) && age < 5 ||
+                    candy.getCandyType().equals(Candy.CandyType.CHOCOLATE_CANDY) && age < 10)) {
                 return Optional.of(candy);
             }
         }
