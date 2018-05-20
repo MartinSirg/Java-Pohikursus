@@ -4,7 +4,6 @@ import justice.judgments.Judgement;
 import justice.people.Judge;
 import justice.people.Lawyer;
 import justice.people.Person;
-import justice.people.RegularPerson;
 
 public class Litigation {
     private Judgement judgement;

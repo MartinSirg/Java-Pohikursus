@@ -18,7 +18,8 @@ public class ConsiderCrimeStrategy implements JudgeStrategy {
                 return new Conviction(lawsuit, lawsuit.getCrime().getMaxFine(), lawsuit.getCrime().getMinJail());
             case SCARING:
                 return new Acquital(lawsuit);
+            default:
+                return new Acquital(lawsuit);
         }
-        return new Acquital(lawsuit);
     }
 }

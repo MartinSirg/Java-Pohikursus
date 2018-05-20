@@ -1,6 +1,5 @@
 package justice.court;
 
-import justice.judgments.Acquital;
 import justice.judgments.Conviction;
 import justice.judgments.Judgement;
 import justice.people.Judge;
@@ -8,10 +7,6 @@ import justice.people.Lawyer;
 import justice.people.Person;
 import justice.policeStation.PoliceStation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 public class Court {

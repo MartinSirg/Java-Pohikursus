@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Main {
-    private static final int MAX_AGE = 100, MIN_JUDGE_AGE = 30, MIN_LAWYER_AGE = 25, MERCY_AGE = 25;
+    private static final int MAX_AGE = 100, MIN_JUDGE_AGE = 30, MIN_LAWYER_AGE = 25, MERCY_AGE = 25, LAWSUITS = 50;
 
     public static void main(String[] args) {
         Random random = new Random();
@@ -24,7 +24,8 @@ public class Main {
             Person.of(Person.Type.REGULAR, random.nextInt(MAX_AGE), "Regular Person" + (i + 1), station);
         }
         for (int i = 0; i < 10; i++) {
-            Person.of(Person.Type.LAWYER, MIN_LAWYER_AGE + random.nextInt(MAX_AGE - MIN_LAWYER_AGE), "Lawyer Guy" + (i + 1), station);
+            Person.of(Person.Type.LAWYER, MIN_LAWYER_AGE + random.nextInt(MAX_AGE - MIN_LAWYER_AGE),
+                    "Lawyer Guy" + (i + 1), station);
         }
         Judge judge1 = (Judge) Person.of(Person.Type.JUDGE,
                 MIN_JUDGE_AGE + random.nextInt(MAX_AGE - MIN_JUDGE_AGE), "Crime Judge 1", station).get();
@@ -48,11 +49,12 @@ public class Main {
         judge4.setJudgeStrategy(considerAgeStrategy);
         judge5.setJudgeStrategy(considerAgeStrategy);
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < LAWSUITS; i++) {
             station.formLawsuit(court);
         }
         System.out.print("People who can be sued: ");
-        System.out.println(station.getPeople().stream().filter(Person::canFileLawsuitAgainst).collect(Collectors.toList()).size());
+        System.out.println(station.getPeople().stream().filter(Person::canFileLawsuitAgainst)
+                .collect(Collectors.toList()).size());
         System.out.print("People who have been jailed: ");
         System.out.println(station.getIncarceratedPeople().size());
         System.out.print("People who haven't been sued or got no jail time: ");

@@ -12,7 +12,7 @@ public class Lawsuit {
         MURDER(TEN_K, 3 * YEAR, HUNDRED_K, 365 * TEN_YEARS),
         THEFT(HUNDRED, 0, HUNDRED_K, YEAR),
         VIOLENCE(HUNDRED, 0, THOUSAND, 2 * MONTH),
-        SCARING(0 ,0, HUNDRED, MONTH);
+        SCARING(0, 0, HUNDRED, MONTH);
 
         private final int minFine, minJail, maxFine, maxJail;
 
