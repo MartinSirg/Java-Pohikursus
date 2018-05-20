@@ -57,7 +57,7 @@ public class Main {
                 .collect(Collectors.toList()).size());
         System.out.print("People who have been jailed: ");
         System.out.println(station.getIncarceratedPeople().size());
-        System.out.print("People who haven't been sued or got no jail time: ");
+        System.out.print("People who haven't been sued or who haven't been jailed: ");
         System.out.println(station.getFreePeople().size());
     }
 }
