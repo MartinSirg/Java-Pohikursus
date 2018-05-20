@@ -3,7 +3,7 @@ package justice.people;
 import justice.policeStation.PoliceStation;
 
 public class RegularPerson extends Person {
-    private final static int MINIMAL_JUDGING_AGE = 18;
+    private static final int MINIMAL_JUDGING_AGE = 18;
 
     RegularPerson(int age, String fullName, PoliceStation policeStation) {
         super(age, fullName, policeStation);
